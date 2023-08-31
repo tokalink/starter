@@ -1,0 +1,17 @@
+{
+    "name": "tokalink/starter",
+    "description": "Teemplate vuexy starter",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Tokalink\\Starter\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tokalink"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
