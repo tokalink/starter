@@ -29,15 +29,12 @@ class LoginController extends Controller
             $fieldType = 'username';
         }
 
-        if (auth()->attempt([$fieldType => $credentials['email-username'], 'password' => $credentials['password']])) {
-            // save session
-            // $request->session()->regenerate();
-            // redirect to dashboard
-            return redirect(config('tokalink.admin_prefix'));
-
+        // login
+        Auth::attempt([$fieldType => $credentials['email-username'], 'password' => $credentials['password']]);
+        if (Auth::check()) {
+            return redirect()->route('dashboard');
         }
-        // gagal login
-       echo 'gagal login';
+        return redirect()->back()->with('error', 'Email/Username atau Password salah');
     }
 
     public function logout()

@@ -76,7 +76,12 @@ class tokalink extends Command
             '--tag' => "tokalink-assets",
         ]);
 
-        
+         // cek table sessions jika belum ada maka buat table sessions maka run artisan session:table dan run migration
+         if (!Schema::hasTable('sessions')) {
+            $this->info('Membuat table sessions...');
+            // $this->call('session:table');
+            // cek file migration sessions jika belum ada maka buat file migration sessions
+        }
 
         // tanya hapus migration default laravel atau tidak, jika ya maka hapus semua table
         if ($this->confirm('Yakin mau hapus migration default laravel?')) {
@@ -90,12 +95,7 @@ class tokalink extends Command
             '--tag' => "tokalink-migrations",
         ]);
 
-        // cek table sessions jika belum ada maka buat table sessions maka run artisan session:table dan run migration
-        if (!Schema::hasTable('sessions')) {
-            $this->info('Membuat table sessions...');
-            $this->call('session:table');
-            $this->call('migrate');
-        }
+       
 
 
         

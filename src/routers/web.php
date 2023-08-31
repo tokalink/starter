@@ -13,14 +13,14 @@ Route::prefix(config('tokalink.admin_prefix'))->group(function () {
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-// Route::get('/', function () {
-//     return view('tokalink::dashboard');
-// })->name('dashboard');
+Route::get('/', function () {
+    return view('tokalink::dashboard');
+})->name('dashboard');
 
 // auth middleware & prefix: admin
-Route::group(['middleware' => ['auth:web', 'is_admin_tokalink'], 'prefix' => config('tokalink.admin_prefix')], function () {
-    // dashboard
-    Route::get('/', function () {
-       dd('dashboard', auth()->user());
-    })->name('dashboard');
-});
+// Route::group(['middleware' => ['auth:web', 'is_admin_tokalink'], 'prefix' => config('tokalink.admin_prefix')], function () {
+//     // dashboard
+//     Route::get('/', function () {
+//        dd('dashboard', auth()->user());
+//     })->name('dashboard');
+// });
