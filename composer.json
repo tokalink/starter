@@ -12,6 +12,13 @@
             "name": "Tokalink"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {}
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tokalink\\Starter\\StarterServiceProvider"
+            ]
+        }
+    }
 }
