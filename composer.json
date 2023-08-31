@@ -13,7 +13,10 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {},
+    "require": {
+        "rap2hpoutre/fast-excel": "^5.2",
+        "barryvdh/laravel-dompdf": "^2.0"
+    },
     "extra": {
         "laravel": {
             "providers": [

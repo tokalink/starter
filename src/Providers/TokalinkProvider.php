@@ -2,7 +2,9 @@
 
 namespace Tokalink\Starter\Providers;
 
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use Tokalink\Starter\Helpers\TokaHelper;
 
 class TokalinkProvider extends ServiceProvider
 {
@@ -11,7 +13,9 @@ class TokalinkProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // TokaHelper
+      
+
     }
 
     /**
@@ -29,6 +33,10 @@ class TokalinkProvider extends ServiceProvider
                 \Tokalink\Starter\Commands\Tokalink::class,
             ]);
         }
+
+        $loader = AliasLoader::getInstance();
+        $loader->alias('tokalink', TokaHelper::class);
+
         // copy assets to public folder
         $this->publishes([
             __DIR__.'/../tokalink-assets' => public_path('tokalink-assets'),
@@ -42,6 +50,12 @@ class TokalinkProvider extends ServiceProvider
         // $this->publishes([
         //     __DIR__.'/../migrations' => database_path('migrations'),
         // ], 'tokalink-migrations');
+
+        // publish views sidebar-menu and navbar
+        $this->publishes([
+            __DIR__.'/../views/menu' => resource_path('views/menu'),
+        ], 'tokalink-layouts');
+       
 
         // load middleware
         $this->app['router']->aliasMiddleware('IsAdminTokalink', \Tokalink\Starter\Middleware\IsAdminTokalink::class);
