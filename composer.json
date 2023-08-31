@@ -17,7 +17,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Tokalink\\Starter\\StarterServiceProvider"
+                "Tokalink\\Starter\\providers\\TokalinkProvider"
             ]
         }
     }
