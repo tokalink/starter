@@ -1,4 +1,4 @@
-@extends('tokalink::layouts.app')
+@extends('AdminLayout::layouts.app')
 
 @section('content')
 <div class="row">
@@ -33,7 +33,7 @@
         $('.datatable-admin').DataTable({
             processing: true,
             serverSide: true,
-            ajax: window.location.href,
+            ajax: window.location.href+'/ajax',
             
         });
     });

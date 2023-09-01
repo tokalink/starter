@@ -30,8 +30,7 @@ class UsersController extends Controller
 
         $this->col = [];
         // gabung first_name & last_name
-        $this->col[] = ["label" => "Firt Name", "name" => "first_name"];
-        $this->col[] = ["label" => "Last Name", "name" => "last_name"];
+        $this->col[] = ["label" => "Name", "name" => "name"];
         $this->col[] = ["label" => "Phone", "name" => "phone"];
         $this->col[] = ["label" => "Email", "name" => "email"];
 

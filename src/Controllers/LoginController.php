@@ -15,7 +15,7 @@ class LoginController extends Controller
             return redirect()->route('tokalink.dashboard');
         }
 
-        return view('tokalink::auth.login');
+        return view('AdminLayout::auth.login');
     }
 
     public function login(Request $request)

@@ -53,7 +53,7 @@
       @if(View::exists('menu.sidebar-menu'))
       @include('menu.sidebar-menu')
       @else
-      @include('tokalink::menu.sidebar-menu')
+      @include('AdminLayout::menu.sidebar-menu')
       @endif
 
       <!-- / Menu -->
@@ -65,7 +65,7 @@
         @if(View::exists('menu.navbar-menu'))
         @include('menu.navbar-menu')
         @else
-        @include('tokalink::menu.navbar-menu')
+        @include('AdminLayout::menu.navbar-menu')
         @endif
 
         <!-- / Navbar -->

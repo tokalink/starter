@@ -24,7 +24,7 @@ class TokalinkProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadRoutesFrom(__DIR__.'/../routers/web.php');
-        $this->loadViewsFrom(__DIR__.'/../views', 'tokalink');
+        $this->loadViewsFrom(__DIR__.'/../views', 'AdminLayout');
         $this->loadMigrationsFrom(__DIR__.'/../migrations');
         // seeders
         // coomand tokalink:install

@@ -1,4 +1,4 @@
-@extends('tokalink::layouts.app')
+@extends('AdminLayout::layouts.app')
 
 @section('content')
 <div class="row">
