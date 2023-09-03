@@ -46,24 +46,20 @@
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons ti ti-forms"></i>
-        <div data-i18n="Wizard Examples">Wizard Examples</div>
+        <div data-i18n="Setting">Setting</div>
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="wizard-ex-checkout.html" class="menu-link">
-            <div data-i18n="Checkout">Checkout</div>
+          <a href="/{{tokalink::getAdminPrefix()}}/module" class="menu-link">
+            <div data-i18n="Module">Module</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="wizard-ex-property-listing.html" class="menu-link">
-            <div data-i18n="Property Listing">Property Listing</div>
+          <a href="/{{tokalink::getAdminPrefix()}}/menu" class="menu-link">
+            <div data-i18n="Menu">Menu</div>
           </a>
         </li>
-        <li class="menu-item">
-          <a href="wizard-ex-create-deal.html" class="menu-link">
-            <div data-i18n="Create Deal">Create Deal</div>
-          </a>
-        </li>
+        
       </ul>
     </li>
   </ul>

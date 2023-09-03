@@ -4,7 +4,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Tokalink\\Starter\\": "src/"
+            "Tokalink\\Starter\\": "src/",
+            "Tokalink\\Starter\\Helpers\\": "src/helpers/"
         }
     },
     "authors": [

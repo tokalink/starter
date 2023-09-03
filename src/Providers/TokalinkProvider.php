@@ -32,6 +32,10 @@ class TokalinkProvider extends ServiceProvider
             $this->commands([
                 \Tokalink\Starter\Commands\Tokalink::class,
             ]);
+
+            $this->commands([
+                \Tokalink\Starter\Commands\tokalink_make_controller::class,
+            ]);
         }
 
         $loader = AliasLoader::getInstance();

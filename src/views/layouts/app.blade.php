@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="{{url('tokalink-assets')}}/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
 
   <!-- Page CSS -->
-
+  <link rel="stylesheet" href="{{url('tokalink-assets')}}/vendor/libs/sweetalert2/sweetalert2.css" />
   <!-- Helpers -->
   <script src="{{url('tokalink-assets')}}/vendor/js/helpers.js"></script>
   <script src="{{url('tokalink-assets')}}/js/config.js"></script>
@@ -137,12 +137,17 @@
   <!-- Vendors JS -->
   <script src="{{url('tokalink-assets')}}/vendor/libs/apex-charts/apexcharts.js"></script>
   <script src="{{url('tokalink-assets')}}/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
+  <script src="{{url('tokalink-assets')}}/vendor/libs/sweetalert2/sweetalert2.js"></script>
   <!-- Main JS -->
   <script src="{{url('tokalink-assets')}}/js/main.js"></script>
 
   <!-- Page JS -->
   <script src="{{url('tokalink-assets')}}/js/app-ecommerce-dashboard.js"></script>
+  <script>
+    
+  </script>
   @yield('js')
 </body>
 

@@ -23,23 +23,6 @@ class CBToka  {
         $table = $data->table ?? 'users';
         self::$col_name = $data->col ?? [];
         dd(self::$col_name);
-        // get col name
         
-        // gabung col name dengan  ,
-        $col = [];
-        foreach ($cols as $key => $value) {
-            $col[] = $value['name'];
-        }
-        $col = implode(',', $col);
-        dd($cols, $col);
-        $datatable = DB::table($table)->select('*');
-        $datatable->get();
-        $json_data = [
-            'draw' => $request->draw,
-            'recordsTotal' => $datatable->count(),
-            'recordsFiltered' => $datatable->count(),
-            'data' => $datatable,
-        ];
-        dd($data, $request->all(), $json_data);
     }
 }

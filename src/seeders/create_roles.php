@@ -4,6 +4,7 @@ namespace Tokalink\Starter\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class create_roles extends Seeder
 {
@@ -25,7 +26,7 @@ class create_roles extends Seeder
                 'created_at' => Date('Y-m-d H:i:s'),
             ],
         ];
-        \DB::table($roles_table)->truncate();
-        \DB::table($roles_table)->insert($roles);
+        DB::table($roles_table)->truncate();
+        DB::table($roles_table)->insert($roles);
     }
 }

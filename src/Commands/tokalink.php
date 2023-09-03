@@ -35,7 +35,8 @@ class tokalink extends Command
             | |    | |  | | |  <     / /\ \   | |        | |   | . ` | |  <  
             | |    | |__| | | . \   / ____ \  | |____   _| |_  | |\  | | . \ 
             |_|     \____/  |_|\_\ /_/    \_\ |______| |_____| |_| \_| |_|\_\
-                                                                            
+            
+            Selamat datang di Tokalink, Mohon Setup dulu Database anda di .env
                                                                             
         "); // kosong
 
@@ -76,13 +77,7 @@ class tokalink extends Command
             '--tag' => "tokalink-assets",
         ]);
 
-         // cek table sessions jika belum ada maka buat table sessions maka run artisan session:table dan run migration
-         if (!Schema::hasTable('sessions')) {
-            $this->info('Membuat table sessions...');
-            // $this->call('session:table');
-            // cek file migration sessions jika belum ada maka buat file migration sessions
-        }
-
+         
         // tanya hapus migration default laravel atau tidak, jika ya maka hapus semua table
         if ($this->confirm('Yakin mau hapus migration default laravel?')) {
             $this->info('Hapus migration default laravel...');
@@ -95,10 +90,6 @@ class tokalink extends Command
             '--tag' => "tokalink-migrations",
         ]);
 
-       
-
-
-        
         // cek table users jika belum ada maka buat table users maka run migration
         if (!Schema::hasTable('users')) {
             $this->info('Membuat table users...');

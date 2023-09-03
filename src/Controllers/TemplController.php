@@ -3,9 +3,10 @@
 namespace Tokalink\Starter\Controllers;
 
 use Illuminate\Http\Request;
+use Tokalink\Starter\Controllers\CustomController;
 use Illuminate\Support\Facades\DB;
 
-class UsersController extends CustomController
+class TemplController extends CustomController
 {
     public function init()
     {

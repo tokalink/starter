@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Tokalink\Starter\Controllers\LoginController;
+use Tokalink\Starter\Controllers\ModuleController;
 use Tokalink\Starter\Controllers\UserController;
 use Tokalink\Starter\Helpers\CBToka;
 
@@ -15,33 +17,37 @@ Route::middleware(['web'])->prefix(config('tokalink.admin_prefix'))->group(funct
 
 
 // prefix: admin
-Route::group(['middleware' => ['web','auth'],'as'=>'tokalink.', 'prefix' => config('tokalink.admin_prefix')], function () {
+Route::group(['middleware' => ['web', 'auth'], 'as' => 'tokalink.', 'prefix' => config('tokalink.admin_prefix')], function () {
     // dashboard
     Route::get('/', function () {
-       return view('AdminLayout::dashboard');
+        return view('AdminLayout::dashboard');
     })->name('dashboard');
 
-    // custom controller & view & data
-    // Route::get('{controller}/{method?}/{id?}', function ($controller, $method = 'index', $id = null) {
-    //     $controller_path = 'App\\Http\\Controllers\\' . ucfirst($controller) . 'Controller';
-    //     if (!class_exists($controller_path)) {
-    //         $controller_path = '\\Tokalink\\Starter\\Controllers\\' . ucfirst($controller) . 'Controller';
-    //     }
-    //     if (!class_exists($controller_path)) {
-    //         return "Controller not found";
-    //     }
-    //     $controller = new $controller_path();
-    //     if (!method_exists($controller, $method)) {
-    //         return CBToka::$method($controller->init());
-    //     }
-    // })->name('custom_controller');
+    // module
+    Route::get('module', [ModuleController::class, 'index'])->name('module');
+    
+
+    // route dari table module url by slug
+    Route::get('page/{slug}/{metod?}/{id?}', function ($slug, $metod = 'custom', $id = null) {
+        $module = DB::table('modules')->where('slug', $slug)->first();
+        if (!$module) {
+            return "Module not found";
+        }
+        $controller_path = 'App\\Http\\Controllers\\' . ucfirst($module->controller) . 'Controller';
+        if (!class_exists($controller_path)) {
+            $controller_path = '\\Tokalink\\Starter\\Controllers\\' . ucfirst($module->controller) . 'Controller';
+        }
+        if (!class_exists($controller_path)) {
+            $controller_path = '\\Tokalink\\Starter\\Controllers\\CustomController';
+        }
+        $controller = new $controller_path();
+
+        return $controller->custom($module, $metod, $id);
+    })->name('custom_controller_by_slug');
 
     // custom controller & view & data
     Route::get('{menu}/{method?}/{id?}', function ($menu, $method = 'index', $id = null) {
         $controller = new Tokalink\Starter\Controllers\CustomController();
-        return $controller->$method($menu,$id);
+        return $controller->$method($menu, $id);
     })->name('custom_controller');
-
-    
 });
-
