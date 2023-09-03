@@ -74,7 +74,7 @@ class tokalink extends Command
 
         $this->call('vendor:publish', [
             '--provider' => "Tokalink\Starter\Providers\TokalinkProvider",
-            '--tag' => "tokalink-assets",
+            '--tag' => "tokalink-assets-theme1",
         ]);
 
          

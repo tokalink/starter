@@ -36,7 +36,7 @@ class CustomController extends Controller
             "searchable" => false
         ];
         $columns = json_encode($columns);
-        return view('AdminLayout::default.datatable', compact('init', 'table', 'columns', 'cols'));
+        return view('AdminLayout::default.'.config('tokalink.theme').'.datatable', compact('init', 'table', 'columns', 'cols'));
     }
 
     public function initAjax($controller)
