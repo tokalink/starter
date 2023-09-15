@@ -22,7 +22,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Tokalink\\Starter\\providers\\TokalinkProvider"
+                "Tokalink\\Starter\\Providers\\TokalinkProvider"
             ]
         }
     }
