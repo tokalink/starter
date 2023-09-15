@@ -22,8 +22,16 @@ class UsersController extends CustomController
         $this->datatable = false;
 
         $this->col = [];
+        $this->col[] = ["label" => "Avatar", "data" => "avatar", "image" => true];
         $this->col[] = ["label" => "Name", "data" => "name"];
         $this->col[] = ["label" => "Phone", "data" => "created_at"];
         $this->col[] = ["label" => "Email", "data" => "email"];
+
+        $this->form = [];
+        $this->form[] = ["label" => "Name", "name" => "name", "type" => "text", "placeholder" => "Name", "required" => true];
+        $this->form[] = ["label" => "Phone", "name" => "phone", "type" => "text", "placeholder" => "Phone", "required" => true];
+        $this->form[] = ["label" => "Email", "name" => "email", "type" => "text", "placeholder" => "Email", "required" => true];
+        // Avatar
+        $this->form[] = ["label" => "Avatar", "name" => "avatar", "type" => "file", "placeholder" => "Avatar", "required" => false];
     }
 }

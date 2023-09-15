@@ -46,7 +46,7 @@ Route::group(['middleware' => ['web', 'auth'], 'as' => 'tokalink.', 'prefix' => 
     })->name('custom_controller_by_slug');
 
     // custom controller & view & data
-    Route::get('{menu}/{method?}/{id?}', function ($menu, $method = 'index', $id = null) {
+    Route::any('{menu}/{method?}/{id?}', function ($menu, $method = 'index', $id = null) {
         $controller = new Tokalink\Starter\Controllers\CustomController();
         return $controller->$method($menu, $id);
     })->name('custom_controller');

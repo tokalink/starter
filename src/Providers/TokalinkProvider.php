@@ -24,7 +24,7 @@ class TokalinkProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadRoutesFrom(__DIR__.'/../routers/web.php');
-        $this->loadViewsFrom(__DIR__.'/../views', 'AdminLayout');
+        $this->loadViewsFrom(__DIR__.'/../views/'.config('tokalink.theme'), 'AdminLayout');
         $this->loadMigrationsFrom(__DIR__.'/../migrations');
         // seeders
         // coomand tokalink:install
@@ -49,6 +49,10 @@ class TokalinkProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../assets-theme2' => public_path('assets-theme2'),
         ], 'tokalink-assets-theme2');
+
+        $this->publishes([
+            __DIR__.'/../assets-adminlte' => public_path('assets-lte'),
+        ], 'tokalink-assets-adminlte');
 
         $this->publishes([
             __DIR__.'/../config/tokalink.php' => config_path('tokalink.php'),
