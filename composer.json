@@ -1,6 +1,6 @@
 {
     "name": "tokalink/starter",
-    "description": "Teemplate vuexy starter",
+    "description": "Template Starter Laravel",
     "license": "MIT",
     "autoload": {
         "psr-4": {
