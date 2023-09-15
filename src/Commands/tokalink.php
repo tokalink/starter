@@ -5,7 +5,7 @@ namespace Tokalink\Starter\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Schema;
 
-class tokalink extends Command
+class Tokalink extends Command
 {
     /**
      * The name and signature of the console command.
