@@ -1,4 +1,4 @@
-@extends('AdminLayout::layouts.'.config('tokalink.theme'))
+@extends('AdminLayout::layout')
 @section('content')
 <div class="row">
     <!-- View sales -->
