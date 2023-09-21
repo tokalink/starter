@@ -13,7 +13,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Login Basic - Pages | Vuexy - Bootstrap Admin Template</title>
+    <title>{{config('tokalink.app_name')}} - Login</title>
 
     <meta name="description" content="" />
 
@@ -156,29 +156,15 @@
                 </div>
               </form>
 
+              <!-- cek if route registrasi exist -->
+              @if(Route::has('register'))
               <p class="text-center">
                 <span>New on our platform?</span>
-                <a href="auth-register-basic.html">
+                <a href="Register">
                   <span>Create an account</span>
                 </a>
               </p>
-
-              <div class="divider my-4">
-                <div class="divider-text">or</div>
-              </div>
-
-              <div class="d-flex justify-content-center">
-                <a href="javascript:;" class="btn btn-icon btn-label-facebook me-3">
-                  <i class="tf-icons fa-brands fa-facebook-f fs-5"></i>
-                </a>
-
-                <a href="javascript:;" class="btn btn-icon btn-label-google-plus me-3">
-                  <i class="tf-icons fa-brands fa-google fs-5"></i>
-                </a>
-
-                <a href="javascript:;" class="btn btn-icon btn-label-twitter">
-                  <i class="tf-icons fa-brands fa-twitter fs-5"></i>
-                </a>
+              @endif
               </div>
             </div>
           </div>

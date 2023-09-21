@@ -19,6 +19,9 @@
         "barryvdh/laravel-dompdf": "^2.0",
         "yajra/laravel-datatables-oracle": "^10.8"
     },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.9"
+    },
     "extra": {
         "laravel": {
             "providers": [
