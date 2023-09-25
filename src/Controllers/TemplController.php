@@ -24,7 +24,7 @@ class TemplController extends CustomController
 
         $this->col = [];
         $this->col[] = ["label" => "Name", "data" => "name"];
-        $this->col[] = ["label" => "Phone", "data" => "created_at"];
-        $this->col[] = ["label" => "Email", "data" => "email"];
+        $this->col[] = ["label" => "Create", "data" => "created_at"];
+        $this->col[] = ["label" => "update", "data" => "updated_at"];
     }
 }

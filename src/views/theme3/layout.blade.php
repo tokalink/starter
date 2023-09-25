@@ -23,7 +23,7 @@
   <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-     
+
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -200,6 +200,41 @@
               </a>
 
             </li>
+            <!-- load menu frm config -->
+            @foreach(config('tokalink.menu') as $key=>$menu)
+            @if(count($menu['child'])>0)
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon {{$menu['icon']}}"></i>
+                <p>
+                  {{$key}}
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+
+                @foreach($menu['child'] as $key2=>$menu2)
+                <li class="nav-item">
+                  <a href="/{{tokalink::getAdminPrefix()}}/{{$menu2['route']}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>{{$key2}}</p>
+                  </a>
+                </li>
+                @endforeach
+              </ul>
+            </li>
+            @else
+            <li class="nav-item">
+              <a href="/{{tokalink::getAdminPrefix()}}/{{$menu['route']}}" class="nav-link">
+                <i class="nav-icon {{$menu['icon']}}"></i>
+                <p>
+                  {{$key}}
+                </p>
+              </a>
+            </li>
+            @endif
+            @endforeach
+
 
             <li class="nav-header">Administrator</li>
             <li class="nav-item">
@@ -248,12 +283,24 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>DataTables</h1>
+              <h1>
+                <i class="fa fa-building"></i> {{ ucwords($table ?? 'Data')}} &nbsp;&nbsp;
+
+                <a href="?" id="btn_show_data" class="btn btn-sm btn-primary" title="Show Data">
+                  <i class="fa fa-table"></i> Show Data
+                </a>
+                <a href="{{ strtolower($table ?? 'Data')}}/add" id="btn_add_new_data" class="btn btn-sm btn-success" title="Add Data">
+                  <i class="fa fa-plus-circle"></i> Add Data
+                </a>
+
+
+              </h1>
+
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">DataTables</li>
+                <li class="breadcrumb-item"><a href="{{ url(config('tokalink.admin_prefix'))}}">Home</a></li>
+                <li class="breadcrumb-item active">{{ strtolower($table ?? 'Data')}}</li>
               </ol>
             </div>
           </div>
