@@ -26,19 +26,19 @@ class add_user extends Seeder
         DB::table($user_table)->truncate();
         DB::table($user_table)->insert($user);
         // fakedata data 2000
-        $faker = Factory::create();
-        $data = [];
-        for ($i = 0; $i < 1000; $i++) {
-            $data[] = [
-                'name' => $faker->name,
-                'username' => $faker->userName,
-                'phone' => $faker->phoneNumber,
-                'email' => $faker->email,
-                'password' => bcrypt('12345678'),
-                'created_at' => Date('Y-m-d H:i:s'),
-            ];
-        }
-        DB::table($user_table)->insert($data);
+        // $faker = Factory::create();
+        // $data = [];
+        // for ($i = 0; $i < 1000; $i++) {
+        //     $data[] = [
+        //         'name' => $faker->name,
+        //         'username' => $faker->userName,
+        //         'phone' => $faker->phoneNumber,
+        //         'email' => $faker->email,
+        //         'password' => bcrypt('12345678'),
+        //         'created_at' => Date('Y-m-d H:i:s'),
+        //     ];
+        // }
+        // DB::table($user_table)->insert($data);
         
 
     }
