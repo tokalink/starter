@@ -4,7 +4,7 @@ namespace Tokalink\Starter\Providers;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
-use Tokalink\Starter\Helpers\TokaHelper;
+use Tokalink\Starter\helpers\TokaHelper;
 
 class TokalinkProvider extends ServiceProvider
 {

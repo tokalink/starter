@@ -21,10 +21,14 @@ class TemplController extends CustomController
         $this->button_export = false;
         $this->paginate = 10;
         $this->datatable = false;
+        $this->title = "Custom";
 
         $this->col = [];
         $this->col[] = ["label" => "Name", "data" => "name"];
         $this->col[] = ["label" => "Create", "data" => "created_at"];
         $this->col[] = ["label" => "update", "data" => "updated_at"];
+
+        $this->form = [];
+        $this->form[] = ["label" => "label", "name" => "created_at", "type" => "text", "placeholder" => "Name", "required" => true];
     }
 }

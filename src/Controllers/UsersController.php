@@ -20,6 +20,7 @@ class UsersController extends CustomController
         $this->button_export = false;
         $this->paginate = 10;
         $this->datatable = false;
+        $this->title = "Users";
 
         $this->col = [];
         $this->col[] = ["label" => "Avatar", "data" => "avatar", "image" => true];
@@ -34,5 +35,4 @@ class UsersController extends CustomController
         // Avatar
         $this->form[] = ["label" => "Avatar", "name" => "avatar", "type" => "file", "placeholder" => "Avatar", "required" => false];
     }
-
 }

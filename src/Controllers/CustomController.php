@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\Storage;
 
 class CustomController extends Controller
 {
-    public $table, $form, $paginate, $datatable, $title_field, $limit, $orderby, $global_privilege, $button_table_action, $button_bulk_action, $button_action_style, $button_add, $button_edit, $button_delete, $button_detail, $button_show, $button_filter, $button_import, $button_export, $col;
+    public $table, $title, $button_print, $form, $paginate, $datatable, $title_field, $limit, $orderby, $global_privilege, $button_table_action, $button_bulk_action, $button_action_style, $button_add, $button_edit, $button_delete, $button_detail, $button_show, $button_filter, $button_import, $button_export, $col;
     public $col_name = [];
 
 
 
-    public function Loader($controller)
+    public function Loader($controller,$menu)
     {
         $controller->init();
         $init = $controller;
@@ -39,7 +39,8 @@ class CustomController extends Controller
             "searchable" => false
         ];
         $columns = json_encode($columns);
-        return view('AdminLayout::datatable', compact('init', 'table', 'columns', 'cols'));
+        // dd($init, $table, $columns, $cols);
+        return view('AdminLayout::datatable', compact('init', 'table', 'columns', 'cols', 'menu'));
     }
 
     public function index($menu, $id = null)
@@ -55,7 +56,7 @@ class CustomController extends Controller
             return $controller->getIndex($menu, $id);
         }
         $controller = new $controller_path();
-        $data = $this->Loader($controller);
+        $data = $this->Loader($controller,$menu);
         return $data;
     }
 
@@ -120,11 +121,13 @@ class CustomController extends Controller
         }
         $controller = new $controller_path();
         $controller->init();
+        $init = $controller;
         $table = $controller->table;
         $form = $controller->form;
         $action = url(config('tokalink.admin_prefix').'/'.$table.'/store');
         $data = [];
-        return view('AdminLayout::crud', compact('form', 'table', 'action','data'));
+        $title_form = "Add ";
+        return view('AdminLayout::crud', compact('form', 'table', 'action','data','init','menu','title_form'));
     }
 
     //edit
@@ -147,9 +150,37 @@ class CustomController extends Controller
         $controller->init();
         $table = $controller->table;
         $form = $controller->form;
+        $init = $controller;
         $data = DB::table($table)->where('id', $id)->first();
         $action = url(config('tokalink.admin_prefix').'/'.$table.'/update/'.$id);
-        return view('AdminLayout::crud', compact('data', 'form', 'table', 'action'));
+        $title_form = "Edit ";
+        return view('AdminLayout::crud', compact('data', 'form', 'table', 'action','menu','title_form','init'));
+    }
+
+    public function detail($menu, $id = null)
+    {
+        
+        $controller_path = 'App\\Http\\Controllers\\Admin\\' . ucfirst($menu) . 'Controller';
+        if (!class_exists($controller_path)) {
+            $controller_path = '\\Tokalink\\Starter\\Controllers\\' . ucfirst($menu) . 'Controller';
+        }
+        if (!class_exists($controller_path)) {
+            return ucfirst($menu) . "Controller not found";
+        }
+        $controller = new $controller_path();
+        // cek jika ada method init maka jalankan method edit dari controller
+        if (method_exists($controller, 'vEdit')) {
+            return $controller->edit($id);
+        }
+        // dd($menu,$id,$controller);
+        $controller->init();
+        $init = $controller;
+        $table = $controller->table;
+        $form = $controller->form;
+        $data = DB::table($table)->where('id', $id)->first();
+        $action = url(config('tokalink.admin_prefix').'/'.$table.'/update/'.$id);
+        $title_form = "Detail ";
+        return view('AdminLayout::crud', compact('data', 'form', 'table', 'action','init','menu','title_form'));
     }
 
     // update
@@ -192,7 +223,7 @@ class CustomController extends Controller
 
     // store
     public function store($menu,$id=null){
-        $controller_path = 'App\\Http\\Controllers\\Admin\\Admin\\' . ucfirst($menu) . 'Controller';
+        $controller_path = 'App\\Http\\Controllers\\Admin\\' . ucfirst($menu) . 'Controller';
         if (!class_exists($controller_path)) {
             $controller_path = '\\Tokalink\\Starter\\Controllers\\' . ucfirst($menu) . 'Controller';
         }
@@ -202,7 +233,7 @@ class CustomController extends Controller
         
         $controller = new $controller_path();
         if (method_exists($controller, 'postStore')) {
-            return $controller->store($id);
+            return $controller->postStore($id);
         }
         $controller->init();
         $table = $controller->table;

@@ -24,9 +24,13 @@
 
     <!-- Datatables CSS -->
     <!-- <link rel="stylesheet" href="/assets-admin/theme2/plugins/datatables/datatables.min.css"> -->
-    <link rel="stylesheet" href="{{url('assets-admin/theme1')}}/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
-  <link rel="stylesheet" href="{{url('assets-admin/theme1')}}/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
-  <link rel="stylesheet" href="{{url('assets-admin/theme1')}}/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
+    <link rel="stylesheet"
+        href="{{ url('assets-admin/theme1') }}/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
+    <link rel="stylesheet"
+        href="{{ url('assets-admin/theme1') }}/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+    <link rel="stylesheet"
+        href="{{ url('assets-admin/theme1') }}/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
+    <link rel="stylesheet" href="/assets-admin/theme3/plugins/summernote/summernote-bs4.min.css">
 
 
     <!-- Main CSS -->
@@ -57,7 +61,8 @@
             <div class="top-nav-search">
                 <form>
                     <input type="text" class="form-control" placeholder="Search here">
-                    <button class="btn" type="submit"><img src="/assets-admin/theme2/img/icons/search.svg" alt="img"></button>
+                    <button class="btn" type="submit"><img src="/assets-admin/theme2/img/icons/search.svg"
+                            alt="img"></button>
                 </form>
             </div>
             <!-- /Search -->
@@ -71,32 +76,37 @@
             <!-- Header Menu -->
             <ul class="nav nav-tabs user-menu">
                 <!-- Flag -->
-                <li class="nav-item dropdown has-arrow flag-nav">
+                {{-- <li class="nav-item dropdown has-arrow flag-nav">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">
-                        <img src="/assets-admin/theme2/img/flags/us1.png" alt="" height="20"><span>English</span>
+                        <img src="/assets-admin/theme2/img/flags/us1.png" alt=""
+                            height="20"><span>English</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
                         <a href="javascript:void(0);" class="dropdown-item">
-                            <img src="/assets-admin/theme2/img/flags/us.png" alt="" height="16"><span>English</span>
+                            <img src="/assets-admin/theme2/img/flags/us.png" alt=""
+                                height="16"><span>English</span>
                         </a>
                         <a href="javascript:void(0);" class="dropdown-item">
-                            <img src="/assets-admin/theme2/img/flags/fr.png" alt="" height="16"><span>French</span>
+                            <img src="/assets-admin/theme2/img/flags/fr.png" alt=""
+                                height="16"><span>French</span>
                         </a>
                         <a href="javascript:void(0);" class="dropdown-item">
-                            <img src="/assets-admin/theme2/img/flags/es.png" alt="" height="16"><span>Spanish</span>
+                            <img src="/assets-admin/theme2/img/flags/es.png" alt=""
+                                height="16"><span>Spanish</span>
                         </a>
                         <a href="javascript:void(0);" class="dropdown-item">
-                            <img src="/assets-admin/theme2/img/flags/de.png" alt="" height="16"><span>German</span>
+                            <img src="/assets-admin/theme2/img/flags/de.png" alt=""
+                                height="16"><span>German</span>
                         </a>
                     </div>
-                </li>
+                </li> --}}
                 <!-- /Flag -->
 
-                <li class="nav-item  has-arrow dropdown-heads ">
+                {{-- <li class="nav-item  has-arrow dropdown-heads ">
                     <a href="javascript:void(0);" class="toggle-switch">
                         <i class="fe fe-moon"></i>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item dropdown  flag-nav dropdown-heads">
                     <a class="nav-link" data-bs-toggle="dropdown" href="#" role="button">
                         <i class="fe fe-bell"></i> <span class="badge rounded-pill"></span>
@@ -112,11 +122,14 @@
                                     <a href="profile.html">
                                         <div class="media d-flex">
                                             <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt="" src="/assets-admin/theme2/img/profiles/avatar-02.jpg">
+                                                <img class="avatar-img rounded-circle" alt=""
+                                                    src="/assets-admin/theme2/img/profiles/avatar-02.jpg">
                                             </span>
                                             <div class="media-body">
-                                                <p class="noti-details"><span class="noti-title">Brian Johnson</span> paid the invoice <span class="noti-title">#DF65485</span></p>
-                                                <p class="noti-time"><span class="notification-time">4 mins ago</span></p>
+                                                <p class="noti-details"><span class="noti-title">Brian Johnson</span>
+                                                    paid the invoice <span class="noti-title">#DF65485</span></p>
+                                                <p class="noti-time"><span class="notification-time">4 mins ago</span>
+                                                </p>
                                             </div>
                                         </div>
                                     </a>
@@ -125,11 +138,15 @@
                                     <a href="profile.html">
                                         <div class="media d-flex">
                                             <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt="" src="/assets-admin/theme2/img/profiles/avatar-03.jpg">
+                                                <img class="avatar-img rounded-circle" alt=""
+                                                    src="/assets-admin/theme2/img/profiles/avatar-03.jpg">
                                             </span>
                                             <div class="media-body">
-                                                <p class="noti-details"><span class="noti-title">Marie Canales</span> has accepted your estimate <span class="noti-title">#GTR458789</span></p>
-                                                <p class="noti-time"><span class="notification-time">6 mins ago</span></p>
+                                                <p class="noti-details"><span class="noti-title">Marie Canales</span>
+                                                    has accepted your estimate <span
+                                                        class="noti-title">#GTR458789</span></p>
+                                                <p class="noti-time"><span class="notification-time">6 mins ago</span>
+                                                </p>
                                             </div>
                                         </div>
                                     </a>
@@ -138,11 +155,14 @@
                                     <a href="profile.html">
                                         <div class="media d-flex">
                                             <div class="avatar avatar-sm">
-                                                <span class="avatar-title rounded-circle bg-primary-light"><i class="far fa-user"></i></span>
+                                                <span class="avatar-title rounded-circle bg-primary-light"><i
+                                                        class="far fa-user"></i></span>
                                             </div>
                                             <div class="media-body">
-                                                <p class="noti-details"><span class="noti-title">New user registered</span></p>
-                                                <p class="noti-time"><span class="notification-time">8 mins ago</span></p>
+                                                <p class="noti-details"><span class="noti-title">New user
+                                                        registered</span></p>
+                                                <p class="noti-time"><span class="notification-time">8 mins ago</span>
+                                                </p>
                                             </div>
                                         </div>
                                     </a>
@@ -151,11 +171,14 @@
                                     <a href="profile.html">
                                         <div class="media d-flex">
                                             <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt="" src="/assets-admin/theme2/img/profiles/avatar-04.jpg">
+                                                <img class="avatar-img rounded-circle" alt=""
+                                                    src="/assets-admin/theme2/img/profiles/avatar-04.jpg">
                                             </span>
                                             <div class="media-body">
-                                                <p class="noti-details"><span class="noti-title">Barbara Moore</span> declined the invoice <span class="noti-title">#RDW026896</span></p>
-                                                <p class="noti-time"><span class="notification-time">12 mins ago</span></p>
+                                                <p class="noti-details"><span class="noti-title">Barbara Moore</span>
+                                                    declined the invoice <span class="noti-title">#RDW026896</span></p>
+                                                <p class="noti-time"><span class="notification-time">12 mins
+                                                        ago</span></p>
                                             </div>
                                         </div>
                                     </a>
@@ -164,11 +187,14 @@
                                     <a href="profile.html">
                                         <div class="media d-flex">
                                             <div class="avatar avatar-sm">
-                                                <span class="avatar-title rounded-circle bg-info-light"><i class="far fa-comment"></i></span>
+                                                <span class="avatar-title rounded-circle bg-info-light"><i
+                                                        class="far fa-comment"></i></span>
                                             </div>
                                             <div class="media-body">
-                                                <p class="noti-details"><span class="noti-title">You have received a new message</span></p>
-                                                <p class="noti-time"><span class="notification-time">2 days ago</span></p>
+                                                <p class="noti-details"><span class="noti-title">You have received a
+                                                        new message</span></p>
+                                                <p class="noti-time"><span class="notification-time">2 days ago</span>
+                                                </p>
                                             </div>
                                         </div>
                                     </a>
@@ -189,7 +215,8 @@
                 <li class="nav-item dropdown">
                     <a href="javascript:void(0)" class="user-link  nav-link" data-bs-toggle="dropdown">
                         <span class="user-img">
-                            <img src="/assets-admin/theme2/img/profiles/avatar-07.jpg" alt="img" class="profilesidebar">
+                            <img src="/assets-admin/theme2/img/profiles/avatar-07.jpg" alt="img"
+                                class="profilesidebar">
                             <span class="animate-circle"></span>
                         </span>
                         <span class="user-content">
@@ -202,17 +229,17 @@
                             <div class="subscription-menu">
                                 <ul>
                                     <li>
-                                        <a class="dropdown-item" href="profile.html">Profile</a>
+                                        <a class="dropdown-item" href="javascript:void(0)">Profile</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="settings.html">Settings</a>
+                                        <a class="dropdown-item" href="/admin/settings">Settings</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="subscription-logout">
                                 <ul>
                                     <li class="pb-0">
-                                        <a class="dropdown-item" href="login.html">Log Out</a>
+                                        <a class="dropdown-item" href="javascript:void(0)">Log Out</a>
                                     </li>
                                 </ul>
                             </div>
@@ -236,7 +263,8 @@
                         <img src="/assets-admin/theme2/img/logo.png" class="img-fluid logo" alt="">
                     </a>
                     <a href="index.html">
-                        <img src="/assets-admin/theme2/img/logo-small.png" class="img-fluid logo-small" alt="">
+                        <img src="/assets-admin/theme2/img/logo-small.png" class="img-fluid logo-small"
+                            alt="">
                     </a>
                 </div>
             </div>
@@ -246,7 +274,9 @@
                     <ul>
                         <li class="menu-title"><span>Main</span></li>
                         <li class="submenu">
-                            <a href="/"><i class="fe fe-home"></i> <span> Dashboard</span></a>
+                            <a href="/admin"><i class="fe fe-home"></i>
+                                <span>
+                                    Dashboard</span></a>
                         </li>
                     </ul>
                     <!-- /Main -->
@@ -254,51 +284,52 @@
                     <!-- Customers -->
                     <ul>
                         <li class="menu-title"><span>Admin</span></li>
-                        <li class="active">
-                            <a href=""><i class="fe fe-users"></i> <span>Users</span></a>
+                        <li>
+                            {{-- <li class="@if (Request::$title == 'Users' || Request::$title == 'Add User' || Request::$title == 'Edit User') ?? 'active' @endif"> --}}
+                            <a href="/admin/users"><i class="fe fe-users"></i> <span>Users</span></a>
                         </li>
                         <li>
-                            <a href="customer-details.html"><i class="fe fe-file"></i> <span>Customer Details</span></a>
+                            <a href="/admin/kontak"><i class="fe fe-command"></i> <span>Kontak</span></a>
                         </li>
+                        {{-- <li>
+                            <a href="javascript:void(0)"><i class="fe fe-file"></i> <span>Customer
+                                    Details</span></a>
+                        </li> --}}
 
                     </ul>
                     <!-- /Customers -->
 
-
-
-
                     <!-- User Management -->
-                    <ul>
+                    {{-- <ul>
                         <li class="menu-title"><span>User Management</span></li>
                         <li class="submenu">
-                            <a href="#"><i class="fe fe-user"></i> <span> Manage Users</span> <span class="menu-arrow"></span></a>
+                            <a href="#"><i class="fe fe-user"></i> <span> Manage Users</span> <span
+                                    class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="add-user.html">Add User</a></li>
                                 <li><a href="users.html">Users</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="roles-permission.html"><i class="fe fe-clipboard"></i> <span>Roles & Permission</span></a>
+                            <a href="roles-permission.html"><i class="fe fe-clipboard"></i> <span>Roles &
+                                    Permission</span></a>
                         </li>
                         <li>
-                            <a href="delete-account-request.html"><i class="fe fe-trash-2"></i> <span>Delete Account Request</span></a>
+                            <a href="delete-account-request.html"><i class="fe fe-trash-2"></i> <span>Delete Account
+                                    Request</span></a>
                         </li>
-                    </ul>
+                    </ul> --}}
                     <!-- /User Management -->
-
-
-
-
-
 
                     <!-- Settings -->
                     <ul>
                         <li class="menu-title"><span>Settings</span></li>
                         <li>
-                            <a href="settings.html"><i class="fe fe-settings"></i> <span>Settings</span></a>
+                            <a href="/admin/settings"><i class="fe fe-settings"></i> <span>Settings</span></a>
                         </li>
                         <li>
-                            <a href="login.html"><i class="fe fe-power"></i> <span>Logout</span></a>
+                            <a href="/{{ config('tokalink.admin_prefix') }}/logout"><i class="fe fe-power"></i>
+                                <span>Logout</span></a>
                         </li>
                     </ul>
                     <!-- /Settings -->
@@ -309,83 +340,8 @@
         <!-- /Sidebar -->
 
         <!-- Page Wrapper -->
-        <div class="page-wrapper">
-            <div class="content container-fluid">
-                <!-- Page Header -->
-                <div class="page-header">
-                    <div class="content-page-header">
-                        <h5>Customers</h5>
-                        <div class="list-btn">
-                            <ul class="filter-list">
-                                <li>
-                                    <a class="btn btn-filters w-auto popup-toggle"><span class="me-2"><i class="fe fe-filter"></i></span>Filter </a>
-                                </li>
-                                <li>
-                                    <a class="active btn-filters" href="javascript:void(0);"><span><i class="fe fe-list"></i></span> </a>
-                                </li>
-                                <li>
-                                    <a class="btn-filters" href="javascript:void(0);"><span><i class="fe fe-grid"></i></span> </a>
-                                </li>
-                                <li>
-                                    <div class="dropdown dropdown-action">
-                                        <a href="#" class="btn-filters" data-bs-toggle="dropdown" aria-expanded="false"><span><i class="fe fe-download"></i></span></a>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <ul class="d-block">
-                                                <li>
-                                                    <a class="d-flex align-items-center download-item" href="javascript:void(0);" download><i class="far fa-file-pdf me-2"></i>PDF</a>
-                                                </li>
-                                                <li>
-                                                    <a class="d-flex align-items-center download-item" href="javascript:void(0);" download><i class="far fa-file-text me-2"></i>CVS</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a class="btn-filters" href="javascript:void(0);"><span><i class="fe fe-printer"></i></span> </a>
-                                </li>
-                                <li>
-                                    <a class="btn btn-import" href="javascript:void(0);"><span><i class="fe fe-check-square me-2"></i>Import Customer</span></a>
-                                </li>
-                                <li>
-                                    <a class="btn btn-primary" href="add-customer.html"><i class="fa fa-plus-circle me-2" aria-hidden="true"></i>Add Customer</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Page Header -->
 
-                <!-- Search Filter -->
-                <div id="filter_inputs" class="card filter-card">
-                    <div class="card-body pb-0">
-                        <div class="row">
-                            <div class="col-sm-6 col-md-3">
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                                <div class="form-group">
-                                    <label>Phone</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Search Filter -->
-
-                @yield('content')
-            </div>
-        </div>
+        @yield('content')
         <!-- /Page Wrapper -->
 
         <!-- Add Asset -->
@@ -401,21 +357,26 @@
                         <div class="accordion" id="accordionMain1">
                             <div class="card-header-new" id="headingOne">
                                 <h6 class="filter-title">
-                                    <a href="javascript:void(0);" class="w-100" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <a href="javascript:void(0);" class="w-100" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true"
+                                        aria-controls="collapseOne">
                                         Customer
                                         <span class="float-end"><i class="fa-solid fa-chevron-down"></i></span>
                                     </a>
                                 </h6>
                             </div>
 
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample1">
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample1">
                                 <div class="card-body-chat">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div id="checkBoxes1">
                                                 <div class="form-custom">
-                                                    <input type="text" class="form-control" id="member_search1" placeholder="Search here">
-                                                    <span><img src="/assets-admin/theme2/img/icons/search.svg" alt="img"></span>
+                                                    <input type="text" class="form-control" id="member_search1"
+                                                        placeholder="Search here">
+                                                    <span><img src="/assets-admin/theme2/img/icons/search.svg"
+                                                            alt="img"></span>
                                                 </div>
                                                 <div class="selectBox-cont">
                                                     <label class="custom_check w-100">
@@ -451,7 +412,10 @@
                                                             </label>
                                                         </div>
                                                         <div class="view-all">
-                                                            <a href="javascript:void(0);" class="viewall-button-One"><span class="me-2">View All</span><span><i class="fa fa-circle-chevron-down"></i></span></a>
+                                                            <a href="javascript:void(0);"
+                                                                class="viewall-button-One"><span class="me-2">View
+                                                                    All</span><span><i
+                                                                        class="fa fa-circle-chevron-down"></i></span></a>
                                                         </div>
                                                     </div>
                                                     <!-- /View All -->
@@ -468,25 +432,30 @@
                         <div class="accordion" id="accordionMain2">
                             <div class="card-header-new" id="headingTwo">
                                 <h6 class="filter-title">
-                                    <a href="javascript:void(0);" class="w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                    <a href="javascript:void(0);" class="w-100 collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="true"
+                                        aria-controls="collapseTwo">
                                         Select Date
                                         <span class="float-end"><i class="fa-solid fa-chevron-down"></i></span>
                                     </a>
                                 </h6>
                             </div>
 
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample2">
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample2">
                                 <div class="card-body-chat">
                                     <div class="form-group">
                                         <label class="form-control-label">From</label>
                                         <div class="cal-icon">
-                                            <input type="email" class="form-control datetimepicker" placeholder="DD-MM-YYYY">
+                                            <input type="email" class="form-control datetimepicker"
+                                                placeholder="DD-MM-YYYY">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-control-label">To</label>
                                         <div class="cal-icon">
-                                            <input type="email" class="form-control datetimepicker" placeholder="DD-MM-YYYY">
+                                            <input type="email" class="form-control datetimepicker"
+                                                placeholder="DD-MM-YYYY">
                                         </div>
                                     </div>
                                 </div>
@@ -498,19 +467,24 @@
                         <div class="accordion" id="accordionMain3">
                             <div class="card-header-new" id="headingThree">
                                 <h6 class="filter-title">
-                                    <a href="javascript:void(0);" class="w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                    <a href="javascript:void(0);" class="w-100 collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="true"
+                                        aria-controls="collapseThree">
                                         By Status
                                         <span class="float-end"><i class="fa-solid fa-chevron-down"></i></span>
                                     </a>
                                 </h6>
                             </div>
 
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample3">
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#accordionExample3">
                                 <div class="card-body-chat">
                                     <div id="checkBoxes2">
                                         <div class="form-custom">
-                                            <input type="text" class="form-control" id="member_search2" placeholder="Search here">
-                                            <span><img src="/assets-admin/theme2/img/icons/search.svg" alt="img"></span>
+                                            <input type="text" class="form-control" id="member_search2"
+                                                placeholder="Search here">
+                                            <span><img src="/assets-admin/theme2/img/icons/search.svg"
+                                                    alt="img"></span>
                                         </div>
                                         <div class="selectBox-cont">
                                             <label class="custom_check w-100">
@@ -548,14 +522,17 @@
                         <div class="accordion accordion-last" id="accordionMain4">
                             <div class="card-header-new" id="headingFour">
                                 <h6 class="filter-title">
-                                    <a href="javascript:void(0);" class="w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                    <a href="javascript:void(0);" class="w-100 collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFour" aria-expanded="true"
+                                        aria-controls="collapseFour">
                                         Category
                                         <span class="float-end"><i class="fa-solid fa-chevron-down"></i></span>
                                     </a>
                                 </h6>
                             </div>
 
-                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample4">
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                data-bs-parent="#accordionExample4">
                                 <div class="card-body-chat">
                                     <div id="checkBoxes3">
                                         <div class="selectBox-cont">
@@ -592,7 +569,9 @@
                                                     </label>
                                                 </div>
                                                 <div class="view-all">
-                                                    <a href="javascript:void(0);" class="viewall-button-Two"><span class="me-2">View All</span><span><i class="fa fa-circle-chevron-down"></i></span></a>
+                                                    <a href="javascript:void(0);" class="viewall-button-Two"><span
+                                                            class="me-2">View All</span><span><i
+                                                                class="fa fa-circle-chevron-down"></i></span></a>
                                                 </div>
                                             </div>
                                             <!-- /View All -->
@@ -603,8 +582,10 @@
                         </div>
                         <!-- /Category -->
 
-                        <button type="submit" class="d-inline-flex align-items-center justify-content-center btn w-100 btn-primary">
-                            <span><img src="/assets-admin/theme2/img/icons/chart.svg" class="me-2" alt="Generate report"></span>Generate report
+                        <button type="submit"
+                            class="d-inline-flex align-items-center justify-content-center btn w-100 btn-primary">
+                            <span><img src="/assets-admin/theme2/img/icons/chart.svg" class="me-2"
+                                    alt="Generate report"></span>Generate report
                         </button>
                     </form>
 
@@ -625,10 +606,12 @@
                         <div class="modal-btn delete-action">
                             <div class="row">
                                 <div class="col-6">
-                                    <button type="reset" data-bs-dismiss="modal" class="w-100 btn btn-primary paid-continue-btn">Delete</button>
+                                    <button type="reset" data-bs-dismiss="modal"
+                                        class="w-100 btn btn-primary paid-continue-btn">Delete</button>
                                 </div>
                                 <div class="col-6">
-                                    <button type="submit" data-bs-dismiss="modal" class="w-100 btn btn-primary paid-cancel-btn">Cancel</button>
+                                    <button type="submit" data-bs-dismiss="modal"
+                                        class="w-100 btn btn-primary paid-cancel-btn">Cancel</button>
                                 </div>
                             </div>
                         </div>
@@ -649,7 +632,7 @@
 
     <!-- Datatable JS -->
     <!-- <script src="/assets-admin/theme2/plugins/datatables/datatables.js"></script> -->
-    <script src="{{url('assets-admin/theme1')}}/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+    <script src="{{ url('assets-admin/theme1') }}/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
     <!-- select CSS -->
@@ -664,7 +647,7 @@
 
     <!-- multiselect JS -->
     <script src="/assets-admin/theme2/js/jquery-ui.min.js"></script>
-
+    <script src="/assets-admin/theme3/plugins/summernote/summernote-bs4.min.js"></script>
     <!-- Custom JS -->
     <script src="/assets-admin/theme2/js/script.js"></script>
     @yield('js')

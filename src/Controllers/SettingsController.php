@@ -20,6 +20,7 @@ class SettingsController extends CustomController
         $this->button_export = false;
         $this->paginate = 10;
         $this->datatable = false;
+        $this->title = "Settings";
 
         $this->col = [];
         $this->col[] = ["label" => "Aplication Name", "data" => "app_name"];
