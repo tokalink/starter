@@ -20,7 +20,7 @@ class TemplController extends CustomController
         $this->button_import = false;
         $this->button_export = false;
         $this->paginate = 10;
-        $this->datatable = false;
+        $this->data_where = null;
         $this->title = "Custom";
 
         $this->col = [];

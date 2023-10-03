@@ -14,7 +14,9 @@ Route::middleware(['web'])->prefix(config('tokalink.admin_prefix'))->group(funct
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-
+// Route::get('/test', function () {
+//     return 'home test';
+// })->name('test');
 
 // prefix: admin
 Route::group(['middleware' => ['web', 'auth'], 'as' => 'tokalink.', 'prefix' => config('tokalink.admin_prefix')], function () {
@@ -25,7 +27,7 @@ Route::group(['middleware' => ['web', 'auth'], 'as' => 'tokalink.', 'prefix' => 
 
     // module
     Route::get('module', [ModuleController::class, 'index'])->name('module');
-    
+
 
     // route dari table module url by slug
     Route::get('page/{slug}/{metod?}/{id?}', function ($slug, $metod = 'custom', $id = null) {
@@ -51,3 +53,5 @@ Route::group(['middleware' => ['web', 'auth'], 'as' => 'tokalink.', 'prefix' => 
         return $controller->$method($menu, $id);
     })->name('custom_controller');
 });
+
+// Route::get('/logout', [LoginController::class, 'logout'])->name('logout');

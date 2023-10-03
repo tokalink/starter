@@ -76,9 +76,39 @@
                                 @continue
                             @endif
 
+                            {{-- type select --}}
+                            @if ($f['type'] == 'select')
+                                <label for="{{ $f['name'] }}">{{ $f['label'] }}</label>
+                                <select id="{{ $f['name'] }}" class="form-control" name="{{ $f['name'] }}">"
+                                    @if (isset($f['datatable']))
+                                        @php
+                                            $options = \DB::table($f['datatable']['table'])->get();
+                                        @endphp
+                                        @foreach ($options as $d)
+                                            <option value="{{ $d->{$f['datatable']['value']} }}"
+                                               >
+                                                {{ $d->{$f['datatable']['label']} }}</option>
+                                        @endforeach
+                                    @endif
+                                    @isset($f['dataenum']))
+                                        @php
+                                            $options = explode(',', $f['dataenum']);
+                                        @endphp
+                                        @foreach ($options as $d)
+                                                @php
+                                                    $op = explode('|', $d);
+                                                @endphp
+                                                <option value="{{ $op[0] }}"
+                                                    {{ $data ? ($data->{$f['name']} == $op[0] ? 'selected' : '') : '' }}>
+                                                    {{ $op[1] ?? $op[0] }}</option>
+                                        @endforeach
+                                    @endisset
+                                </select>
+                                @continue
+                            @endif
 
                             <div class="form-group">
-                                <label for="exampleInputEmail1">{{ $f['label'] }}</label>
+                                <label for="{{ $f['name'] }}">{{ $f['label'] }}</label>
                                 <input type="{{ $f['type'] }}" class="form-control" id="{{ $f['name'] }}"
                                     name="{{ $f['name'] }}" placeholder="{{ $f['placeholder'] }}"
                                     {{ $f['required'] ? 'required' : '' }} value="{{ $data ? $data->{$f['name']} : '' }}">

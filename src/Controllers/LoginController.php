@@ -32,7 +32,7 @@ class LoginController extends Controller
         // login
         if (Auth::attempt([$fieldType => $credentials['email-username'], 'password' => $credentials['password']])) {
             return redirect(config('tokalink.admin_prefix'));
-        }{
+        } {
             return redirect()->back()->withErrors(['email-username' => 'Email/Username atau password salah']);
         }
     }

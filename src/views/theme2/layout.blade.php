@@ -5,25 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <title>Tokalink</title>
-
-    <!-- Favicon -->
     <link rel="shortcut icon" href="/assets-admin/theme2/img/favicon.png">
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/assets-admin/theme2/css/bootstrap.min.css">
-
-    <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="/assets-admin/theme2/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="/assets-admin/theme2/plugins/fontawesome/css/all.min.css">
-
-    <!-- Feather CSS -->
     <link rel="stylesheet" href="/assets-admin/theme2/plugins/feather/feather.css">
-
-    <!-- Datepicker CSS -->
     <link rel="stylesheet" href="/assets-admin/theme2/css/bootstrap-datetimepicker.min.css">
-
-    <!-- Datatables CSS -->
-    <!-- <link rel="stylesheet" href="/assets-admin/theme2/plugins/datatables/datatables.min.css"> -->
     <link rel="stylesheet"
         href="{{ url('assets-admin/theme1') }}/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
     <link rel="stylesheet"
@@ -31,15 +18,10 @@
     <link rel="stylesheet"
         href="{{ url('assets-admin/theme1') }}/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
     <link rel="stylesheet" href="/assets-admin/theme3/plugins/summernote/summernote-bs4.min.css">
-
-
-    <!-- Main CSS -->
     <link rel="stylesheet" href="/assets-admin/theme2/css/style.css">
 </head>
 
 <body>
-
-
     <!-- Main Wrapper -->
     <div class="main-wrapper">
 
@@ -246,23 +228,17 @@
                         </div>
                     </div>
                 </li>
-                <!-- /User Menu -->
-
             </ul>
-
-            <!-- /Header Menu -->
-
         </div>
-        <!-- /Header -->
 
-        <!-- Sidebar -->
+
         <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="sidebar-logo">
-                    <a href="index.html">
+                    <a href="/admin">
                         <img src="/assets-admin/theme2/img/logo.png" class="img-fluid logo" alt="">
                     </a>
-                    <a href="index.html">
+                    <a href="/admin">
                         <img src="/assets-admin/theme2/img/logo-small.png" class="img-fluid logo-small"
                             alt="">
                     </a>
@@ -272,13 +248,23 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <!-- Main -->
                     <ul>
-                        <li class="menu-title"><span>Main</span></li>
-                        <li class="submenu">
+                        {{-- <li class="submenu">
                             <a href="/admin"><i class="fe fe-home"></i>
-                                <span>
-                                    Dashboard</span></a>
-                        </li>
+                                <span> Dashboard </span></a>
+                            </li> --}}
+                        @foreach (config('tokalink.menu') as $key => $menu)
+                            <li class="menu-title"><span>{{ $key }}</span></li>
+                             
+                            @if (count($menu['child']) > 0)
+                                <li class="submenu">
+                                    <a href="/admin"><i class="fe fe-home"></i>
+                                        <span> Dashboard {{ $key }} </span></a>
+                                </li>
+                            @endif
+                        @endforeach
                     </ul>
+
+
                     <!-- /Main -->
 
                     <!-- Customers -->
@@ -290,6 +276,9 @@
                         </li>
                         <li>
                             <a href="/admin/kontak"><i class="fe fe-command"></i> <span>Kontak</span></a>
+                        </li>
+                        <li>
+                            <a href="/admin/berkala"><i class="fe fe-mail"></i> <span>Pesan Berkala</span></a>
                         </li>
                         {{-- <li>
                             <a href="javascript:void(0)"><i class="fe fe-file"></i> <span>Customer
@@ -328,7 +317,7 @@
                             <a href="/admin/settings"><i class="fe fe-settings"></i> <span>Settings</span></a>
                         </li>
                         <li>
-                            <a href="/{{ config('tokalink.admin_prefix') }}/logout"><i class="fe fe-power"></i>
+                            <a href="{{ route('logout') }}"><i class="fe fe-power"></i>
                                 <span>Logout</span></a>
                         </li>
                     </ul>

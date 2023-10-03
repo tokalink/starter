@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\Storage;
 
 class CustomController extends Controller
 {
-    public $table, $title, $button_print, $form, $paginate, $datatable, $title_field, $limit, $orderby, $global_privilege, $button_table_action, $button_bulk_action, $button_action_style, $button_add, $button_edit, $button_delete, $button_detail, $button_show, $button_filter, $button_import, $button_export, $col;
+    public $table, $title, $button_print, $form, $paginate, $data_where, $title_field, $limit, $orderby, $global_privilege, $button_table_action, $button_bulk_action, $button_action_style, $button_add, $button_edit, $button_delete, $button_detail, $button_show, $button_filter, $button_import, $button_export, $col;
     public $col_name = [];
 
 
 
-    public function Loader($controller,$menu)
+    public function Loader($controller, $menu)
     {
         $controller->init();
         $init = $controller;
@@ -56,7 +56,7 @@ class CustomController extends Controller
             return $controller->getIndex($menu, $id);
         }
         $controller = new $controller_path();
-        $data = $this->Loader($controller,$menu);
+        $data = $this->Loader($controller, $menu);
         return $data;
     }
 
@@ -79,7 +79,11 @@ class CustomController extends Controller
         $request = request();
         $url = str_replace('/ajax', '', $request->url());
         $table = $initdata->table;
-        return DataTables::of(DB::table($table))
+        $ajax_data = DB::table($table);
+        if ($initdata->data_where) {
+            $ajax_data = $ajax_data->whereRaw($initdata->data_where);
+        }
+        return DataTables::of($ajax_data)
             ->addColumn('action', function ($row) use ($url, $controller) {
                 $btn = '<a href="' . url($url . '/edit/' . $row->id) . '" class="btn btn-sm btn-icon btn-primary"><i class="fa fa-edit"></i></a>';
                 $btn .= '<a href="' . url($url . '/detail/' . $row->id) . '" class="btn btn-sm btn-icon btn-info"><i class="fa fa-eye"></i></a>';
@@ -91,7 +95,7 @@ class CustomController extends Controller
         // return $data;
     }
 
-   
+
     // remove
     public function remove($menu, $id = null)
     {
@@ -124,16 +128,16 @@ class CustomController extends Controller
         $init = $controller;
         $table = $controller->table;
         $form = $controller->form;
-        $action = url(config('tokalink.admin_prefix').'/'.$table.'/store');
+        $action = url(config('tokalink.admin_prefix') . '/' . $menu . '/store');
         $data = [];
         $title_form = "Add ";
-        return view('AdminLayout::crud', compact('form', 'table', 'action','data','init','menu','title_form'));
+        return view('AdminLayout::crud', compact('form', 'table', 'action', 'data', 'init', 'menu', 'title_form'));
     }
 
     //edit
     public function edit($menu, $id = null)
     {
-        
+
         $controller_path = 'App\\Http\\Controllers\\Admin\\' . ucfirst($menu) . 'Controller';
         if (!class_exists($controller_path)) {
             $controller_path = '\\Tokalink\\Starter\\Controllers\\' . ucfirst($menu) . 'Controller';
@@ -152,14 +156,14 @@ class CustomController extends Controller
         $form = $controller->form;
         $init = $controller;
         $data = DB::table($table)->where('id', $id)->first();
-        $action = url(config('tokalink.admin_prefix').'/'.$table.'/update/'.$id);
+        $action = url(config('tokalink.admin_prefix') . '/' . $table . '/update/' . $id);
         $title_form = "Edit ";
-        return view('AdminLayout::crud', compact('data', 'form', 'table', 'action','menu','title_form','init'));
+        return view('AdminLayout::crud', compact('data', 'form', 'table', 'action', 'menu', 'title_form', 'init'));
     }
 
     public function detail($menu, $id = null)
     {
-        
+
         $controller_path = 'App\\Http\\Controllers\\Admin\\' . ucfirst($menu) . 'Controller';
         if (!class_exists($controller_path)) {
             $controller_path = '\\Tokalink\\Starter\\Controllers\\' . ucfirst($menu) . 'Controller';
@@ -178,13 +182,14 @@ class CustomController extends Controller
         $table = $controller->table;
         $form = $controller->form;
         $data = DB::table($table)->where('id', $id)->first();
-        $action = url(config('tokalink.admin_prefix').'/'.$table.'/update/'.$id);
+        $action = url(config('tokalink.admin_prefix') . '/' . $table . '/update/' . $id);
         $title_form = "Detail ";
-        return view('AdminLayout::crud', compact('data', 'form', 'table', 'action','init','menu','title_form'));
+        return view('AdminLayout::crud', compact('data', 'form', 'table', 'action', 'init', 'menu', 'title_form'));
     }
 
     // update
-    public function update($menu,$id=null){
+    public function update($menu, $id = null)
+    {
         $controller_path = 'App\\Http\\Controllers\\Admin\\' . ucfirst($menu) . 'Controller';
         if (!class_exists($controller_path)) {
             $controller_path = '\\Tokalink\\Starter\\Controllers\\' . ucfirst($menu) . 'Controller';
@@ -208,7 +213,7 @@ class CustomController extends Controller
             if ($f['type'] == 'file') {
                 // upload file to storage
                 $file = $request->file($f['name']);
-                if(!$file) continue;
+                if (!$file) continue;
                 // random name
                 $file_name = time() . '_' . preg_replace('/\s+/', '_', strtolower($file->getClientOriginalName()));
                 $file_url =  Storage::disk('public')->putFileAs($table, $file, $file_name);
@@ -218,11 +223,12 @@ class CustomController extends Controller
         // update_at
         $data['updated_at'] = date('Y-m-d H:i:s');
         DB::table($table)->where('id', $id)->update($data);
-        return redirect(url(config('tokalink.admin_prefix').'/'.$table));
+        return redirect(url(config('tokalink.admin_prefix') . '/' . $table));
     }
 
     // store
-    public function store($menu,$id=null){
+    public function store($menu, $id = null)
+    {
         $controller_path = 'App\\Http\\Controllers\\Admin\\' . ucfirst($menu) . 'Controller';
         if (!class_exists($controller_path)) {
             $controller_path = '\\Tokalink\\Starter\\Controllers\\' . ucfirst($menu) . 'Controller';
@@ -230,7 +236,7 @@ class CustomController extends Controller
         if (!class_exists($controller_path)) {
             return ucfirst($menu) . "Controller not found";
         }
-        
+
         $controller = new $controller_path();
         if (method_exists($controller, 'postStore')) {
             return $controller->postStore($id);
@@ -247,7 +253,7 @@ class CustomController extends Controller
             if ($f['type'] == 'file') {
                 // upload file to storage
                 $file = $request->file($f['name']);
-                if(!$file) continue;
+                if (!$file) continue;
                 // random name
                 $file_name = time() . '_' . preg_replace('/\s+/', '_', strtolower($file->getClientOriginalName()));
                 $file_url =  Storage::disk('public')->putFileAs($table, $file, $file_name);
@@ -256,8 +262,8 @@ class CustomController extends Controller
         }
         // create_at
         $data['created_at'] = date('Y-m-d H:i:s');
+        $data['user_id'] = auth()->user()->id;
         DB::table($table)->insert($data);
-        return redirect(url(config('tokalink.admin_prefix').'/'.$table));
-
+        return redirect(url(config('tokalink.admin_prefix') . '/' . $table));
     }
 }

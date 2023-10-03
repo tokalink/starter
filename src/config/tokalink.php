@@ -5,11 +5,18 @@ return [
     'admin_prefix' => env('ADMIN_PREFIX_URL', 'admin'),
     'theme' => env('THEME_ADMIN', 'theme3'),
     'menu'=>[
-        'Order' => [
+        'Main' => [
             'icon' => 'fas fa-cart-plus',
             'route' => 'order',
-            'permission' => 'dashboard',
-            'child' => []
+            'permission' => 'master',
+            'child' => [
+                'Dashboard' => [
+                    'icon' => 'fa fa-home',
+                    'route' => 'dashboard',
+                    'permission' => 'dashboard',
+                    'child' => []
+                ],
+            ]
         ],
         'Master' => [
             'icon' => 'fa fa-database',

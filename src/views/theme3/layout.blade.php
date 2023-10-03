@@ -212,7 +212,6 @@
                 </p>
               </a>
               <ul class="nav nav-treeview">
-
                 @foreach($menu['child'] as $key2=>$menu2)
                 <li class="nav-item">
                   <a href="/{{tokalink::getAdminPrefix()}}/{{$menu2['route']}}" class="nav-link">

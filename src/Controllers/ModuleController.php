@@ -10,17 +10,17 @@ use Yajra\DataTables\DataTables;
 
 class ModuleController extends Controller
 {
-    
+
     public function index(Request $request)
     {
         $data = DB::table('modules')->get();
         return view('AdminLayout::module', compact('data'));
     }
-    
+
     public function edit($id)
     {
         $module = DB::table('modules')->where('id', $id)->first();
-        $action = url(config('tokalink.admin_prefix').'/module/update/'.$id);
+        $action = url(config('tokalink.admin_prefix') . '/module/update/' . $id);
         // all table_name in database user
         $tables = DB::select('SHOW TABLES');
         // ambil nama table saja
@@ -29,7 +29,7 @@ class ModuleController extends Controller
         $table = $module->table;
         // get column & type data from table
         $columns = DB::select('SHOW COLUMNS FROM ' . $table);
-        
+
         // remove type timestamp & auto_increment
         $columns = array_filter($columns, function ($column) {
             return $column->Field != 'created_at' && $column->Field != 'updated_at' && $column->Extra != 'auto_increment';
@@ -37,20 +37,20 @@ class ModuleController extends Controller
         dd($columns);
         return view('AdminLayout::module_edit', compact('module', 'action', 'tables'));
     }
-    
+
     public function update($id)
     {
-       dd(request()->all());
+        dd(request()->all());
     }
 
-   
+
     public function getIndex($menu, $id = null)
     {
         $form = DB::table('modules')->where('slug', $menu)->first();
-        if(!$form){
+        if (!$form) {
             return ucfirst($menu) . "Controller not found";
         }
-        $action = url(config('tokalink.admin_prefix').'/'.$menu.'/store');
+        $action = url(config('tokalink.admin_prefix') . '/' . $menu . '/store');
         $cols = json_decode($form->col, true);
         $columns = [];
         foreach ($cols as $col) {
@@ -71,12 +71,12 @@ class ModuleController extends Controller
         return view('AdminLayout::datatable', compact('form', 'action', 'cols', 'columns'));
     }
 
-    public function getAjax($menu,$id)
+    public function getAjax($menu, $id)
     {
 
-       $module = DB::table('modules')->where('slug', $menu)->first();
-       $table = $module->table;
-       $url = str_replace('/ajax', '', request()->url());
+        $module = DB::table('modules')->where('slug', $menu)->first();
+        $table = $module->table;
+        $url = str_replace('/ajax', '', request()->url());
         return DataTables::of(DB::table($table))
             ->addColumn('action', function ($row) use ($url) {
                 $btn = '<a href="' . url($url . '/edit/' . $row->id) . '" class="btn btn-sm btn-icon btn-primary"><i class="fa fa-edit"></i></a>';
@@ -87,5 +87,4 @@ class ModuleController extends Controller
             })
             ->toJson();
     }
-    
 }
