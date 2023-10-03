@@ -7,30 +7,30 @@
     <title>Tokalink</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/assets-theme2/img/favicon.png">
+    <link rel="shortcut icon" href="/assets-admin/theme2/img/favicon.png">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/assets-theme2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets-admin/theme2/css/bootstrap.min.css">
 
     <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="/assets-theme2/plugins/fontawesome/css/fontawesome.min.css">
-    <link rel="stylesheet" href="/assets-theme2/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/assets-admin/theme2/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets-admin/theme2/plugins/fontawesome/css/all.min.css">
 
     <!-- Feather CSS -->
-    <link rel="stylesheet" href="/assets-theme2/plugins/feather/feather.css">
+    <link rel="stylesheet" href="/assets-admin/theme2/plugins/feather/feather.css">
 
     <!-- Datepicker CSS -->
-    <link rel="stylesheet" href="/assets-theme2/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="/assets-admin/theme2/css/bootstrap-datetimepicker.min.css">
 
     <!-- Datatables CSS -->
-    <!-- <link rel="stylesheet" href="/assets-theme2/plugins/datatables/datatables.min.css"> -->
-    <link rel="stylesheet" href="{{url('assets-theme1')}}/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
-  <link rel="stylesheet" href="{{url('assets-theme1')}}/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
-  <link rel="stylesheet" href="{{url('assets-theme1')}}/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
+    <!-- <link rel="stylesheet" href="/assets-admin/theme2/plugins/datatables/datatables.min.css"> -->
+    <link rel="stylesheet" href="{{url('assets-admin/theme1')}}/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
+  <link rel="stylesheet" href="{{url('assets-admin/theme1')}}/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+  <link rel="stylesheet" href="{{url('assets-admin/theme1')}}/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
 
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="/assets-theme2/css/style.css">
+    <link rel="stylesheet" href="/assets-admin/theme2/css/style.css">
 </head>
 
 <body>
@@ -57,7 +57,7 @@
             <div class="top-nav-search">
                 <form>
                     <input type="text" class="form-control" placeholder="Search here">
-                    <button class="btn" type="submit"><img src="/assets-theme2/img/icons/search.svg" alt="img"></button>
+                    <button class="btn" type="submit"><img src="/assets-admin/theme2/img/icons/search.svg" alt="img"></button>
                 </form>
             </div>
             <!-- /Search -->
@@ -73,20 +73,20 @@
                 <!-- Flag -->
                 <li class="nav-item dropdown has-arrow flag-nav">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">
-                        <img src="/assets-theme2/img/flags/us1.png" alt="" height="20"><span>English</span>
+                        <img src="/assets-admin/theme2/img/flags/us1.png" alt="" height="20"><span>English</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
                         <a href="javascript:void(0);" class="dropdown-item">
-                            <img src="/assets-theme2/img/flags/us.png" alt="" height="16"><span>English</span>
+                            <img src="/assets-admin/theme2/img/flags/us.png" alt="" height="16"><span>English</span>
                         </a>
                         <a href="javascript:void(0);" class="dropdown-item">
-                            <img src="/assets-theme2/img/flags/fr.png" alt="" height="16"><span>French</span>
+                            <img src="/assets-admin/theme2/img/flags/fr.png" alt="" height="16"><span>French</span>
                         </a>
                         <a href="javascript:void(0);" class="dropdown-item">
-                            <img src="/assets-theme2/img/flags/es.png" alt="" height="16"><span>Spanish</span>
+                            <img src="/assets-admin/theme2/img/flags/es.png" alt="" height="16"><span>Spanish</span>
                         </a>
                         <a href="javascript:void(0);" class="dropdown-item">
-                            <img src="/assets-theme2/img/flags/de.png" alt="" height="16"><span>German</span>
+                            <img src="/assets-admin/theme2/img/flags/de.png" alt="" height="16"><span>German</span>
                         </a>
                     </div>
                 </li>
@@ -112,7 +112,7 @@
                                     <a href="profile.html">
                                         <div class="media d-flex">
                                             <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt="" src="/assets-theme2/img/profiles/avatar-02.jpg">
+                                                <img class="avatar-img rounded-circle" alt="" src="/assets-admin/theme2/img/profiles/avatar-02.jpg">
                                             </span>
                                             <div class="media-body">
                                                 <p class="noti-details"><span class="noti-title">Brian Johnson</span> paid the invoice <span class="noti-title">#DF65485</span></p>
@@ -125,7 +125,7 @@
                                     <a href="profile.html">
                                         <div class="media d-flex">
                                             <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt="" src="/assets-theme2/img/profiles/avatar-03.jpg">
+                                                <img class="avatar-img rounded-circle" alt="" src="/assets-admin/theme2/img/profiles/avatar-03.jpg">
                                             </span>
                                             <div class="media-body">
                                                 <p class="noti-details"><span class="noti-title">Marie Canales</span> has accepted your estimate <span class="noti-title">#GTR458789</span></p>
@@ -151,7 +151,7 @@
                                     <a href="profile.html">
                                         <div class="media d-flex">
                                             <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt="" src="/assets-theme2/img/profiles/avatar-04.jpg">
+                                                <img class="avatar-img rounded-circle" alt="" src="/assets-admin/theme2/img/profiles/avatar-04.jpg">
                                             </span>
                                             <div class="media-body">
                                                 <p class="noti-details"><span class="noti-title">Barbara Moore</span> declined the invoice <span class="noti-title">#RDW026896</span></p>
@@ -189,7 +189,7 @@
                 <li class="nav-item dropdown">
                     <a href="javascript:void(0)" class="user-link  nav-link" data-bs-toggle="dropdown">
                         <span class="user-img">
-                            <img src="/assets-theme2/img/profiles/avatar-07.jpg" alt="img" class="profilesidebar">
+                            <img src="/assets-admin/theme2/img/profiles/avatar-07.jpg" alt="img" class="profilesidebar">
                             <span class="animate-circle"></span>
                         </span>
                         <span class="user-content">
@@ -233,10 +233,10 @@
             <div class="sidebar-header">
                 <div class="sidebar-logo">
                     <a href="index.html">
-                        <img src="/assets-theme2/img/logo.png" class="img-fluid logo" alt="">
+                        <img src="/assets-admin/theme2/img/logo.png" class="img-fluid logo" alt="">
                     </a>
                     <a href="index.html">
-                        <img src="/assets-theme2/img/logo-small.png" class="img-fluid logo-small" alt="">
+                        <img src="/assets-admin/theme2/img/logo-small.png" class="img-fluid logo-small" alt="">
                     </a>
                 </div>
             </div>
@@ -415,7 +415,7 @@
                                             <div id="checkBoxes1">
                                                 <div class="form-custom">
                                                     <input type="text" class="form-control" id="member_search1" placeholder="Search here">
-                                                    <span><img src="/assets-theme2/img/icons/search.svg" alt="img"></span>
+                                                    <span><img src="/assets-admin/theme2/img/icons/search.svg" alt="img"></span>
                                                 </div>
                                                 <div class="selectBox-cont">
                                                     <label class="custom_check w-100">
@@ -510,7 +510,7 @@
                                     <div id="checkBoxes2">
                                         <div class="form-custom">
                                             <input type="text" class="form-control" id="member_search2" placeholder="Search here">
-                                            <span><img src="/assets-theme2/img/icons/search.svg" alt="img"></span>
+                                            <span><img src="/assets-admin/theme2/img/icons/search.svg" alt="img"></span>
                                         </div>
                                         <div class="selectBox-cont">
                                             <label class="custom_check w-100">
@@ -604,7 +604,7 @@
                         <!-- /Category -->
 
                         <button type="submit" class="d-inline-flex align-items-center justify-content-center btn w-100 btn-primary">
-                            <span><img src="/assets-theme2/img/icons/chart.svg" class="me-2" alt="Generate report"></span>Generate report
+                            <span><img src="/assets-admin/theme2/img/icons/chart.svg" class="me-2" alt="Generate report"></span>Generate report
                         </button>
                     </form>
 
@@ -642,31 +642,31 @@
     <!-- /Main Wrapper -->
 
     <!-- jQuery -->
-    <script src="/assets-theme2/js/jquery-3.6.3.min.js"></script>
+    <script src="/assets-admin/theme2/js/jquery-3.6.3.min.js"></script>
 
     <!-- Bootstrap Core JS -->
-    <script src="/assets-theme2/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets-admin/theme2/js/bootstrap.bundle.min.js"></script>
 
     <!-- Datatable JS -->
-    <!-- <script src="/assets-theme2/plugins/datatables/datatables.js"></script> -->
-    <script src="{{url('assets-theme1')}}/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+    <!-- <script src="/assets-admin/theme2/plugins/datatables/datatables.js"></script> -->
+    <script src="{{url('assets-admin/theme1')}}/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
     <!-- select CSS -->
-    <script src="/assets-theme2/plugins/select2/js/select2.min.js"></script>
+    <script src="/assets-admin/theme2/plugins/select2/js/select2.min.js"></script>
 
     <!-- Slimscroll JS -->
-    <script src="/assets-theme2/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/assets-admin/theme2/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <!-- Datepicker Core JS -->
-    <script src="/assets-theme2/plugins/moment/moment.min.js"></script>
-    <script src="/assets-theme2/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/assets-admin/theme2/plugins/moment/moment.min.js"></script>
+    <script src="/assets-admin/theme2/js/bootstrap-datetimepicker.min.js"></script>
 
     <!-- multiselect JS -->
-    <script src="/assets-theme2/js/jquery-ui.min.js"></script>
+    <script src="/assets-admin/theme2/js/jquery-ui.min.js"></script>
 
     <!-- Custom JS -->
-    <script src="/assets-theme2/js/script.js"></script>
+    <script src="/assets-admin/theme2/js/script.js"></script>
     @yield('js')
 </body>
 

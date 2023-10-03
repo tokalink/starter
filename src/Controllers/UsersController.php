@@ -34,4 +34,5 @@ class UsersController extends CustomController
         // Avatar
         $this->form[] = ["label" => "Avatar", "name" => "avatar", "type" => "file", "placeholder" => "Avatar", "required" => false];
     }
+
 }

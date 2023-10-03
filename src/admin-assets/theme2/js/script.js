@@ -618,7 +618,7 @@ Version      : 1.0
 			'<li class="sidebar-icons">' +
 				'<a class="toggle tipinfo open-layout open-siderbar" href="#" data-toggle="tooltip" data-placement="left" data-bs-original-title="Tooltip on left">' +
 					'<div class="tooltip-five ">' +
-						'<img src="/assets-theme2/img/icons/siderbar-icon1.svg" class="feather-five" alt="">' +
+						'<img src="/assets-admin/theme2/img/icons/siderbar-icon1.svg" class="feather-five" alt="">' +
  						'<span class="tooltiptext">Check Layout</span>' +
 					'</div>' +
 				'</a>' +
@@ -626,7 +626,7 @@ Version      : 1.0
 			'<li class="sidebar-icons">' +
 	 			'<a class="toggle tipinfo open-settings open-siderbar" href="#" data-toggle="tooltip" data-placement="left" data-bs-original-title="Tooltip on left">' +
 	 				'<div class="tooltip-five">' +
-	 					'<img src="/assets-theme2/img/icons/siderbar-icon2.svg" class="feather-five" alt="">' +
+	 					'<img src="/assets-admin/theme2/img/icons/siderbar-icon2.svg" class="feather-five" alt="">' +
 	 					'<span class="tooltiptext">Demo Settings</span>' +
 	 				'</div>' +
 	 			'</a>' +
@@ -634,7 +634,7 @@ Version      : 1.0
 	 		'<li class="sidebar-icons">' +
 	 			'<a class="toggle tipinfo" target="_blank" href="https://themeforest.net/item/kanakku-bootstrap-admin-html-template/29436291?s_rank=11" data-toggle="tooltip" data-placement="left" title="Tooltip on left">' +
 	 				'<div class="tooltip-five">' +
-	 					'<img src="/assets-theme2/img/icons/siderbar-icon3.svg" class="feather-five" alt="">' +
+	 					'<img src="/assets-admin/theme2/img/icons/siderbar-icon3.svg" class="feather-five" alt="">' +
 	 					'<span class="tooltiptext">Buy Now</span>' +
 	 				'</div>' +
 	 			'</a>' +
@@ -650,12 +650,12 @@ Version      : 1.0
 		 				'<div class="col-xl-6 col-sm-6 col-12">' +
 		 					'<div class="sidebar-logo">' +
 		 						'<a href="index.html" class="logo">' +
-		 							'<img src="/assets-theme2/img/logo.png" alt="Logo" class="img-flex">' +
+		 							'<img src="/assets-admin/theme2/img/logo.png" alt="Logo" class="img-flex">' +
 		 						'</a>' +
 		 					'</div>' +
 		 				'</div>' +
 		 				'<div class="col-xl-6 col-sm-6 col-12">' +
-		 					'<a class="btn-closed" href="#"><img class="img-fliud" src="/assets-theme2/img/icons/sidebar-delete-icon.svg" alt="demo"></a>' +
+		 					'<a class="btn-closed" href="#"><img class="img-fliud" src="/assets-admin/theme2/img/icons/sidebar-delete-icon.svg" alt="demo"></a>' +
 		 				'</div>' +
 		 			'</div>' +
 		 		'</div>' +
@@ -665,7 +665,7 @@ Version      : 1.0
 		 			'<h5 class="sidebar-title">Choose layout</h5>' +
 		 			'<div class="col-xl-6 col-sm-6 col-12">' +
 		 				'<div class="sidebar-image">' +
-		 					'<img class="img-fliud" src="/assets-theme2/img/demo-one.png" alt="demo">' +
+		 					'<img class="img-fliud" src="/assets-admin/theme2/img/demo-one.png" alt="demo">' +
 		 				'</div>' +
 		 				'<div class="row">' +
 		 					'<div class="col-lg-6 layout">' +
@@ -681,7 +681,7 @@ Version      : 1.0
 		 			'</div>' +
 		 			'<div class="col-xl-6 col-sm-6 col-12">' +
 		 				'<div class="sidebar-image">' +
-		 					'<img class="img-fliud" src="/assets-theme2/img/demo-two.png" alt="demo">' +
+		 					'<img class="img-fliud" src="/assets-admin/theme2/img/demo-two.png" alt="demo">' +
 		 				'</div>' +
 		 				'<div class="row">' +
 		 					'<div class="col-lg-6 layout">' +
@@ -700,7 +700,7 @@ Version      : 1.0
 		 			'<h5 class="sidebar-title">Choose layout</h5>' +
 		 			'<div class="col-xl-6 col-sm-6 col-12">' +
 		 				'<div class="sidebar-image">' +
-		 					'<img class="img-fliud" src="/assets-theme2/img/demo-three.png" alt="demo">' +
+		 					'<img class="img-fliud" src="/assets-admin/theme2/img/demo-three.png" alt="demo">' +
 		 				'</div>' +
 		 				'<div class="row">' +
 		 					'<div class="col-lg-6 layout">' +
@@ -716,7 +716,7 @@ Version      : 1.0
 		 			'</div>' +
 		 			'<div class="col-xl-6 col-sm-6 col-12">' +
 		 				'<div class="sidebar-image">' +
-		 					'<img class="img-fliud" src="/assets-theme2/img/demo-four.png" alt="demo">' +
+		 					'<img class="img-fliud" src="/assets-admin/theme2/img/demo-four.png" alt="demo">' +
 		 				'</div>' +
 		 				'<div class="row">' +
 		 					'<div class="col-lg-6 layout">' +
@@ -734,7 +734,7 @@ Version      : 1.0
 		 		'<div class="row align-items-center">' +
 		 			'<div class="col-xl-6 col-sm-6 col-12">' +
 		 				'<div class="sidebar-image">' +
-		 					'<img class="img-fliud" src="/assets-theme2/img/demo-five.png" alt="demo">' +
+		 					'<img class="img-fliud" src="/assets-admin/theme2/img/demo-five.png" alt="demo">' +
 		 				'</div>' +
 		 				'<div class="row">' +
 		 					'<div class="col-lg-6 layout">' +
@@ -752,7 +752,7 @@ Version      : 1.0
 		 		'<div class="row align-items-center">' +
 		 			'<div class="reset-page text-center">' +
 		 				'<a href="index.html">' +
-		 					'<button type="button" class="sidebar-but"><img src="/assets-theme2/img/icons/reset-icon.svg" alt="reset" class="reset-icon">' +
+		 					'<button type="button" class="sidebar-but"><img src="/assets-admin/theme2/img/icons/reset-icon.svg" alt="reset" class="reset-icon">' +
 		 						'<span>Reset Settings</span>' +
 		 					'</button>' +
 		 				'</a>' +
@@ -770,12 +770,12 @@ Version      : 1.0
 	 					'<div class="col-xl-6 col-sm-6 col-12">' +
 	 						'<div class="sidebar-logo">' +
 	 							'<a href="index.html" class="logo">' +
-	 								'<img src="/assets-theme2/img/logo.png" alt="Logo" class="img-flex">' +
+	 								'<img src="/assets-admin/theme2/img/logo.png" alt="Logo" class="img-flex">' +
 	 							'</a>' +
 	 						'</div>' +
 	 					'</div>' +
 	 					'<div class="col-xl-6 col-sm-6 col-12">' +
-	 						'<a class="btn-closed" href="#"><img class="img-fliud" src="/assets-theme2/img/icons/sidebar-delete-icon.svg" alt="demo"></a>' +
+	 						'<a class="btn-closed" href="#"><img class="img-fliud" src="/assets-admin/theme2/img/icons/sidebar-delete-icon.svg" alt="demo"></a>' +
 	 					'</div>' +
 	 				'</div>' +
 	 			'</div>' +
@@ -786,7 +786,7 @@ Version      : 1.0
 	 				'<h5 class="sidebar-sub-title">Layout Type</h5>' +
 	 				'<div class="col-xl-3 col-sm-6">' +
 	 					'<div class="sidebar-image-one">' +
-	 						'<img class="img-fliud" src="/assets-theme2/img/layout-one.png" alt="layout">' +
+	 						'<img class="img-fliud" src="/assets-admin/theme2/img/layout-one.png" alt="layout">' +
 	 					'</div>' +
 	 					'<div class="row">' +
 	 						'<div class="col-lg-6 setting">' +
@@ -802,7 +802,7 @@ Version      : 1.0
 	 				'</div>' +
 	 				'<div class="col-xl-3 col-sm-6">' +
 	 					'<div class="sidebar-image-one">' +
-	 						'<img class="img-fliud" src="/assets-theme2/img/layout-two.png" alt="layout">' +
+	 						'<img class="img-fliud" src="/assets-admin/theme2/img/layout-two.png" alt="layout">' +
 	 					'</div>' +
 	 					'<div class="row">' +
 	 						'<div class="col-lg-6 setting">' +
@@ -818,7 +818,7 @@ Version      : 1.0
 	 				'</div>' +
 	 				'<div class="col-xl-3 col-sm-6">' +
 	 					'<div class="sidebar-image-one">' +
-	 						'<img class="img-fliud" src="/assets-theme2/img/layout-three.png" alt="layout">' +
+	 						'<img class="img-fliud" src="/assets-admin/theme2/img/layout-three.png" alt="layout">' +
 	 					'</div>' +
 	 					'<div class="row">' +
 	 						'<div class="col-lg-6 setting">' +
@@ -837,7 +837,7 @@ Version      : 1.0
 	 				'<h5 class="sidebar-sub-title">Sidebar Type</h5>' +
 	 				'<div class="col-xl-3 col-sm-6">' +
 	 					'<div class="sidebar-image-one">' +
-	 						'<img src="/assets-theme2/img/layout-four.png" alt="layout">' +
+	 						'<img src="/assets-admin/theme2/img/layout-four.png" alt="layout">' +
 	 					'</div>' +
 	 					'<div class="row">' +
 	 						'<div class="col-lg-6 setting">' +
@@ -853,7 +853,7 @@ Version      : 1.0
 	 				'</div>' +
 	 				'<div class="col-xl-3 col-sm-6">' +
 	 					'<div class="sidebar-image-one">' +
-	 						'<img src="/assets-theme2/img/layout-five.png" alt="layout">' +
+	 						'<img src="/assets-admin/theme2/img/layout-five.png" alt="layout">' +
 	 					'</div>' +
 	 					'<div class="row">' +
 	 						'<div class="col-lg-6 setting">' +
@@ -996,7 +996,7 @@ Version      : 1.0
 	 				'<div class="col-xl-12 col-sm-12">' +
 	 					'<div class="reset-page text-center">' +
 	 						'<a href="index.html">' +
-	 							'<button type="button" class="sidebar-but"><img src="/assets-theme2/img/icons/reset-icon.svg" alt="reset" class="reset-icon">' +
+	 							'<button type="button" class="sidebar-but"><img src="/assets-admin/theme2/img/icons/reset-icon.svg" alt="reset" class="reset-icon">' +
 		 							'<span>Reset Settings</span>' +
 		 						'</button>' +
 	 						'</a>' +

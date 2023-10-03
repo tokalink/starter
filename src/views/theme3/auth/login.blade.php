@@ -5,7 +5,7 @@
   class="light-style layout-wide customizer-hide"
   dir="ltr"
   data-theme="theme-default"
-  data-assets-path="{{url('assets-theme1')}}/"
+  data-assets-path="{{url('assets-admin/theme1')}}/"
   data-template="vertical-menu-template">
   <head>
     <meta charset="utf-8" />
@@ -18,7 +18,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{url('assets-theme1')}}/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{url('assets-admin/theme1')}}/img/favicon/favicon.ico" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,33 +28,33 @@
       rel="stylesheet" />
 
     <!-- Icons -->
-    <link rel="stylesheet" href="{{url('assets-theme1')}}/vendor/fonts/fontawesome.css" />
-    <link rel="stylesheet" href="{{url('assets-theme1')}}/vendor/fonts/tabler-icons.css" />
-    <link rel="stylesheet" href="{{url('assets-theme1')}}/vendor/fonts/flag-icons.css" />
+    <link rel="stylesheet" href="{{url('assets-admin/theme1')}}/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="{{url('assets-admin/theme1')}}/vendor/fonts/tabler-icons.css" />
+    <link rel="stylesheet" href="{{url('assets-admin/theme1')}}/vendor/fonts/flag-icons.css" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="{{url('assets-theme1')}}/vendor/css/rtl/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{url('assets-theme1')}}/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="{{url('assets-theme1')}}/css/demo.css" />
+    <link rel="stylesheet" href="{{url('assets-admin/theme1')}}/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{{url('assets-admin/theme1')}}/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{{url('assets-admin/theme1')}}/css/demo.css" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{url('assets-theme1')}}/vendor/libs/node-waves/node-waves.css" />
-    <link rel="stylesheet" href="{{url('assets-theme1')}}/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-    <link rel="stylesheet" href="{{url('assets-theme1')}}/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="{{url('assets-admin/theme1')}}/vendor/libs/node-waves/node-waves.css" />
+    <link rel="stylesheet" href="{{url('assets-admin/theme1')}}/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="{{url('assets-admin/theme1')}}/vendor/libs/typeahead-js/typeahead.css" />
     <!-- Vendor -->
-    <link rel="stylesheet" href="{{url('assets-theme1')}}/vendor/libs/@form-validation/umd/styles/index.min.css" />
+    <link rel="stylesheet" href="{{url('assets-admin/theme1')}}/vendor/libs/@form-validation/umd/styles/index.min.css" />
 
     <!-- Page CSS -->
     <!-- Page -->
-    <link rel="stylesheet" href="{{url('assets-theme1')}}/vendor/css/pages/page-auth.css" />
+    <link rel="stylesheet" href="{{url('assets-admin/theme1')}}/vendor/css/pages/page-auth.css" />
 
     <!-- Helpers -->
-    <script src="{{url('assets-theme1')}}/vendor/js/helpers.js"></script>
+    <script src="{{url('assets-admin/theme1')}}/vendor/js/helpers.js"></script>
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
-    <script src="{{url('assets-theme1')}}/vendor/js/template-customizer.js"></script>
+    <script src="{{url('assets-admin/theme1')}}/vendor/js/template-customizer.js"></script>
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{{url('assets-theme1')}}/js/config.js"></script>
+    <script src="{{url('assets-admin/theme1')}}/js/config.js"></script>
   </head>
 
   <body>
@@ -192,27 +192,27 @@
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
 
-    <script src="{{url('assets-theme1')}}/vendor/libs/jquery/jquery.js"></script>
-    <script src="{{url('assets-theme1')}}/vendor/libs/popper/popper.js"></script>
-    <script src="{{url('assets-theme1')}}/vendor/js/bootstrap.js"></script>
-    <script src="{{url('assets-theme1')}}/vendor/libs/node-waves/node-waves.js"></script>
-    <script src="{{url('assets-theme1')}}/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="{{url('assets-theme1')}}/vendor/libs/hammer/hammer.js"></script>
-    <script src="{{url('assets-theme1')}}/vendor/libs/i18n/i18n.js"></script>
-    <script src="{{url('assets-theme1')}}/vendor/libs/typeahead-js/typeahead.js"></script>
-    <script src="{{url('assets-theme1')}}/vendor/js/menu.js"></script>
+    <script src="{{url('assets-admin/theme1')}}/vendor/libs/jquery/jquery.js"></script>
+    <script src="{{url('assets-admin/theme1')}}/vendor/libs/popper/popper.js"></script>
+    <script src="{{url('assets-admin/theme1')}}/vendor/js/bootstrap.js"></script>
+    <script src="{{url('assets-admin/theme1')}}/vendor/libs/node-waves/node-waves.js"></script>
+    <script src="{{url('assets-admin/theme1')}}/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="{{url('assets-admin/theme1')}}/vendor/libs/hammer/hammer.js"></script>
+    <script src="{{url('assets-admin/theme1')}}/vendor/libs/i18n/i18n.js"></script>
+    <script src="{{url('assets-admin/theme1')}}/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="{{url('assets-admin/theme1')}}/vendor/js/menu.js"></script>
 
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="{{url('assets-theme1')}}/vendor/libs/@form-validation/umd/bundle/popular.min.js"></script>
-    <script src="{{url('assets-theme1')}}/vendor/libs/@form-validation/umd/plugin-bootstrap5/index.min.js"></script>
-    <script src="{{url('assets-theme1')}}/vendor/libs/@form-validation/umd/plugin-auto-focus/index.min.js"></script>
+    <script src="{{url('assets-admin/theme1')}}/vendor/libs/@form-validation/umd/bundle/popular.min.js"></script>
+    <script src="{{url('assets-admin/theme1')}}/vendor/libs/@form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+    <script src="{{url('assets-admin/theme1')}}/vendor/libs/@form-validation/umd/plugin-auto-focus/index.min.js"></script>
 
     <!-- Main JS -->
-    <script src="{{url('assets-theme1')}}/js/main.js"></script>
+    <script src="{{url('assets-admin/theme1')}}/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="{{url('assets-theme1')}}/js/pages-auth.js"></script>
+    <script src="{{url('assets-admin/theme1')}}/js/pages-auth.js"></script>
   </body>
 </html>
