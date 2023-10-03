@@ -11,10 +11,8 @@ use Illuminate\Support\Facades\Storage;
 
 class CustomController extends Controller
 {
-    public $table, $title, $button_print, $form, $paginate, $data_where, $title_field, $limit, $orderby, $global_privilege, $button_table_action, $button_bulk_action, $button_action_style, $button_add, $button_edit, $button_delete, $button_detail, $button_show, $button_filter, $button_import, $button_export, $col;
+    public $table, $filter_by, $title, $button_print, $form, $paginate, $data_where, $title_field, $limit, $orderby, $global_privilege, $button_table_action, $button_bulk_action, $button_action_style, $button_add, $button_edit, $button_delete, $button_detail, $button_show, $button_filter, $button_import, $button_export, $col, $datatable;
     public $col_name = [];
-
-
 
     public function Loader($controller, $menu)
     {

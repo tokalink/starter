@@ -4,19 +4,12 @@ return [
     'app_name' => env('APP_NAME', 'Tokalink'),
     'admin_prefix' => env('ADMIN_PREFIX_URL', 'admin'),
     'theme' => env('THEME_ADMIN', 'theme3'),
-    'menu'=>[
+    'menu' => [
         'Main' => [
             'icon' => 'fas fa-cart-plus',
             'route' => 'order',
             'permission' => 'master',
-            'child' => [
-                'Dashboard' => [
-                    'icon' => 'fa fa-home',
-                    'route' => 'dashboard',
-                    'permission' => 'dashboard',
-                    'child' => []
-                ],
-            ]
+            'child' => [],
         ],
         'Master' => [
             'icon' => 'fa fa-database',

@@ -16,11 +16,12 @@ class UsersController extends CustomController
         $this->button_detail = true;
         $this->button_show = true;
         $this->button_filter = true;
+        $this->filter_by = ["kategori", "status"];
         $this->button_import = false;
         $this->button_export = false;
         $this->paginate = 10;
         $this->datatable = false;
-        $this->title = "Users";
+        $this->title = "User";
 
         $this->col = [];
         $this->col[] = ["label" => "Avatar", "data" => "avatar", "image" => true];

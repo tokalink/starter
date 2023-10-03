@@ -11,8 +11,7 @@
                         <ul class="filter-list">
                             @if ($init->button_filter)
                                 <li>
-                                    <a class="btn btn-filters w-auto popup-toggle"><span class="me-2"><i
-                                                class="fe fe-filter"></i></span>Filter </a>
+                                    <a class="btn btn-filters w-auto popup-toggle"><span class="me-2"><i class="fe fe-filter"></i></span>Filter </a>
                                 </li>
                             @endif
                             @if ($init->button_export)
@@ -91,7 +90,7 @@
             <!-- /Search Filter -->
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="card-table">
+                    <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
                                 @include('AdminComponents::datatable')
@@ -103,10 +102,153 @@
 
         </div>
     </div>
+
+    <div class="toggle-sidebar">
+        <div class="sidebar-layout-filter">
+            <div class="sidebar-header">
+                <h5>Filter</h5>
+                <a href="#" class="sidebar-closes"><i class="fa-regular fa-circle-xmark"></i></a>
+            </div>
+            <div class="sidebar-body">
+                <form action="#" autocomplete="off">
+
+                    @if ($init->filter_by['created_at'])
+                        <div class="accordion" id="accordionMain2">
+                            <div class="card-header-new" id="created_at">
+                                <h6 class="filter-title">
+                                    <a href="javascript:void(0);" class="w-100 collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#created_at" aria-expanded="true" aria-controls="created_at">
+                                        {{ $init->filter_by['created_at'] }}
+                                        <span class="float-end"><i class="fa-solid fa-chevron-down"></i></span>
+                                    </a>
+                                </h6>
+                            </div>
+
+                            <div id="created_at" class="collapse" aria-labelledby="created_at"
+                                data-bs-parent="#accordionExample2">
+                                <div class="card-body-chat">
+                                    <div class="form-group">
+                                        <label class="form-control-label">From</label>
+                                        <div class="cal-icon">
+                                            <input type="email" class="form-control datetimepicker"
+                                                placeholder="DD-MM-YYYY">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label">To</label>
+                                        <div class="cal-icon">
+                                            <input type="email" class="form-control datetimepicker"
+                                                placeholder="DD-MM-YYYY">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+                    @foreach($init->filter_by as $filter)
+                        <div class="accordion" id="accordionMain2">
+                            <div class="card-header-new" id="headingTwo">
+                                <h6 class="filter-title">
+                                    <a href="javascript:void(0);" class="w-100 collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="true"
+                                        aria-controls="collapseTwo">
+                                        Select Date
+                                        <span class="float-end"><i class="fa-solid fa-chevron-down"></i></span>
+                                    </a>
+                                </h6>
+                            </div>
+
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample2">
+                                <div class="card-body-chat">
+                                    <div class="form-group">
+                                        <label class="form-control-label">From</label>
+                                        <div class="cal-icon">
+                                            <input type="email" class="form-control datetimepicker"
+                                                placeholder="DD-MM-YYYY">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label">To</label>
+                                        <div class="cal-icon">
+                                            <input type="email" class="form-control datetimepicker"
+                                                placeholder="DD-MM-YYYY">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                    {{-- <div class="accordion" id="accordionMain3">
+                        <div class="card-header-new" id="headingThree">
+                            <h6 class="filter-title">
+                                <a href="javascript:void(0);" class="w-100 collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="true"
+                                    aria-controls="collapseThree">
+                                    By Status
+                                    <span class="float-end"><i class="fa-solid fa-chevron-down"></i></span>
+                                </a>
+                            </h6>
+                        </div>
+
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample3">
+                            <div class="card-body-chat">
+                                <div id="checkBoxes2">
+                                    <div class="form-custom">
+                                        <input type="text" class="form-control" id="member_search2"
+                                            placeholder="Search here">
+                                        <span><img src="/assets-admin/theme2/img/icons/search.svg"
+                                                alt="img"></span>
+                                    </div>
+                                    <div class="selectBox-cont">
+                                        <label class="custom_check w-100">
+                                            <input type="checkbox" name="bystatus">
+                                            <span class="checkmark"></span> All Invoices
+                                        </label>
+                                        <label class="custom_check w-100">
+                                            <input type="checkbox" name="bystatus">
+                                            <span class="checkmark"></span> Paid
+                                        </label>
+                                        <label class="custom_check w-100">
+                                            <input type="checkbox" name="bystatus">
+                                            <span class="checkmark"></span> Overdue
+                                        </label>
+                                        <label class="custom_check w-100">
+                                            <input type="checkbox" name="bystatus">
+                                            <span class="checkmark"></span> Draft
+                                        </label>
+                                        <label class="custom_check w-100">
+                                            <input type="checkbox" name="bystatus">
+                                            <span class="checkmark"></span> Recurring
+                                        </label>
+                                        <label class="custom_check w-100">
+                                            <input type="checkbox" name="bystatus">
+                                            <span class="checkmark"></span> Cancelled
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
+
+                    <button type="submit"
+                        class="d-inline-flex align-items-center justify-content-center btn w-100 btn-primary">
+                        <span><img src="/assets-admin/theme2/img/icons/chart.svg" class="me-2"
+                                alt="Generate report"></span>Generate report
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')
     <script>
+
         $.fn.dataTable.ext.errMode = 'none';
         var col = '{!! $columns !!}';
         col = JSON.parse(col);
@@ -118,7 +260,7 @@
         });
 
         var table = $('.datatable2').DataTable({
-            ajax: window.location.href + '/ajax',
+            ajax: window.location.href.split("#")[0] + '/ajax',
             processing: true,
             serverSide: true,
             pageLength: 10,
@@ -127,8 +269,8 @@
                 [10, 20, 50, 100, 500, 1000, 2000, 5000, -1],
                 [10, 20, 50, 100, 500, 1000, 2000, 5000, 'All']
             ],
-            'columnDefs': [{
-                // For Checkboxes
+            'columnDefs': [
+                {
                 targets: 0,
                 orderable: false,
                 checkboxes: {
@@ -137,8 +279,18 @@
                 render: function() {
                     return '<input type="checkbox" class="dt-checkboxes form-check-input" >';
                 },
-                searchable: false
-            }],
+                    searchable: false
+                }
+            ],
+            drawCallback: function() {
+                $('.dataTables_filter').addClass('text-end');
+                $('.buttons-copy').removeClass('btn-secondary').addClass('btn-warning');
+                $('.buttons-csv').removeClass('btn-secondary').addClass('btn-info');
+                $('.buttons-excel').removeClass('btn-secondary').addClass('btn-success');
+                $('.buttons-pdf').removeClass('btn-secondary').addClass('btn-danger');
+                $('.form-select-sm').removeClass('form-select');
+                console.log('Draw completed');
+            },
             columns: col,
             buttons: [
                 'copy',

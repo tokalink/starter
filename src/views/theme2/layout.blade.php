@@ -13,10 +13,6 @@
     <link rel="stylesheet" href="/assets-admin/theme2/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet"
         href="{{ url('assets-admin/theme1') }}/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
-    <link rel="stylesheet"
-        href="{{ url('assets-admin/theme1') }}/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
-    <link rel="stylesheet"
-        href="{{ url('assets-admin/theme1') }}/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
     <link rel="stylesheet" href="/assets-admin/theme3/plugins/summernote/summernote-bs4.min.css">
     <link rel="stylesheet" href="/assets-admin/theme2/css/style.css">
 </head>
@@ -202,8 +198,9 @@
                             <span class="animate-circle"></span>
                         </span>
                         <span class="user-content">
-                            <span class="user-details">Admin</span>
-                            <span class="user-name">John Smith</span>
+                            <span
+                                class="user-details text-{{ auth()->user()->role->style_color ?? '' }}">{{ auth()->user()->role->description }}</span>
+                            <span class="user-name">{{ auth()->user()->name }}</span>
                         </span>
                     </a>
                     <div class="dropdown-menu menu-drop-user">
@@ -231,7 +228,6 @@
             </ul>
         </div>
 
-
         <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="sidebar-logo">
@@ -244,85 +240,34 @@
                     </a>
                 </div>
             </div>
+
             <div class="sidebar-inner slimscroll">
                 <div id="sidebar-menu" class="sidebar-menu">
                     <!-- Main -->
                     <ul>
-                        {{-- <li class="submenu">
-                            <a href="/admin"><i class="fe fe-home"></i>
-                                <span> Dashboard </span></a>
-                            </li> --}}
                         @foreach (config('tokalink.menu') as $key => $menu)
-                            <li class="menu-title"><span>{{ $key }}</span></li>
-                             
                             @if (count($menu['child']) > 0)
-                                <li class="submenu">
-                                    <a href="/admin"><i class="fe fe-home"></i>
-                                        <span> Dashboard {{ $key }} </span></a>
-                                </li>
+                                <li class="menu-title"><span>{{ $key }}</span></li>
+                                @foreach ($menu['child'] as $key2 => $menu2)
+                                    @php
+                                        $routeActive = url()->current();
+                                        $currentRoute = substr($routeActive, strlen(url('/')) + 1);
+                                        // $active = 'admin/' . $menu2['route'] . '';
+                                        // dd($active);
+                                        // $isActive = $currentRoute == /{{ tokalink::getAdminPrefix() }}/{{ $menu2['route'] }};
+                                        // dd($isActive);
+                                        // dd($menu2['route']);
+                                    @endphp
+                                    <li class="menu-item" data-route="{{ $menu2['route'] }}">
+                                        {{-- <li class="menu-item {{ $currentRoute == $menu2['route'] ? 'active' : '' }}"> --}}
+                                        <a href="/{{ tokalink::getAdminPrefix() }}/{{ $menu2['route'] }}"><i
+                                                class="{{ $menu2['icon'] }}"></i>
+                                            <span> {{ $key2 }} </span></a>
+                                    </li>
+                                @endforeach
                             @endif
                         @endforeach
                     </ul>
-
-
-                    <!-- /Main -->
-
-                    <!-- Customers -->
-                    <ul>
-                        <li class="menu-title"><span>Admin</span></li>
-                        <li>
-                            {{-- <li class="@if (Request::$title == 'Users' || Request::$title == 'Add User' || Request::$title == 'Edit User') ?? 'active' @endif"> --}}
-                            <a href="/admin/users"><i class="fe fe-users"></i> <span>Users</span></a>
-                        </li>
-                        <li>
-                            <a href="/admin/kontak"><i class="fe fe-command"></i> <span>Kontak</span></a>
-                        </li>
-                        <li>
-                            <a href="/admin/berkala"><i class="fe fe-mail"></i> <span>Pesan Berkala</span></a>
-                        </li>
-                        {{-- <li>
-                            <a href="javascript:void(0)"><i class="fe fe-file"></i> <span>Customer
-                                    Details</span></a>
-                        </li> --}}
-
-                    </ul>
-                    <!-- /Customers -->
-
-                    <!-- User Management -->
-                    {{-- <ul>
-                        <li class="menu-title"><span>User Management</span></li>
-                        <li class="submenu">
-                            <a href="#"><i class="fe fe-user"></i> <span> Manage Users</span> <span
-                                    class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="add-user.html">Add User</a></li>
-                                <li><a href="users.html">Users</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="roles-permission.html"><i class="fe fe-clipboard"></i> <span>Roles &
-                                    Permission</span></a>
-                        </li>
-                        <li>
-                            <a href="delete-account-request.html"><i class="fe fe-trash-2"></i> <span>Delete Account
-                                    Request</span></a>
-                        </li>
-                    </ul> --}}
-                    <!-- /User Management -->
-
-                    <!-- Settings -->
-                    <ul>
-                        <li class="menu-title"><span>Settings</span></li>
-                        <li>
-                            <a href="/admin/settings"><i class="fe fe-settings"></i> <span>Settings</span></a>
-                        </li>
-                        <li>
-                            <a href="{{ route('logout') }}"><i class="fe fe-power"></i>
-                                <span>Logout</span></a>
-                        </li>
-                    </ul>
-                    <!-- /Settings -->
-
                 </div>
             </div>
         </div>
@@ -334,253 +279,6 @@
         <!-- /Page Wrapper -->
 
         <!-- Add Asset -->
-        <div class="toggle-sidebar">
-            <div class="sidebar-layout-filter">
-                <div class="sidebar-header">
-                    <h5>Filter</h5>
-                    <a href="#" class="sidebar-closes"><i class="fa-regular fa-circle-xmark"></i></a>
-                </div>
-                <div class="sidebar-body">
-                    <form action="#" autocomplete="off">
-                        <!-- Customer -->
-                        <div class="accordion" id="accordionMain1">
-                            <div class="card-header-new" id="headingOne">
-                                <h6 class="filter-title">
-                                    <a href="javascript:void(0);" class="w-100" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true"
-                                        aria-controls="collapseOne">
-                                        Customer
-                                        <span class="float-end"><i class="fa-solid fa-chevron-down"></i></span>
-                                    </a>
-                                </h6>
-                            </div>
-
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample1">
-                                <div class="card-body-chat">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div id="checkBoxes1">
-                                                <div class="form-custom">
-                                                    <input type="text" class="form-control" id="member_search1"
-                                                        placeholder="Search here">
-                                                    <span><img src="/assets-admin/theme2/img/icons/search.svg"
-                                                            alt="img"></span>
-                                                </div>
-                                                <div class="selectBox-cont">
-                                                    <label class="custom_check w-100">
-                                                        <input type="checkbox" name="username">
-                                                        <span class="checkmark"></span> Brian Johnson
-                                                    </label>
-                                                    <label class="custom_check w-100">
-                                                        <input type="checkbox" name="username">
-                                                        <span class="checkmark"></span> Russell Copeland
-                                                    </label>
-                                                    <label class="custom_check w-100">
-                                                        <input type="checkbox" name="username">
-                                                        <span class="checkmark"></span> Greg Lynch
-                                                    </label>
-                                                    <label class="custom_check w-100">
-                                                        <input type="checkbox" name="username">
-                                                        <span class="checkmark"></span> John Blair
-                                                    </label>
-                                                    <!-- View All -->
-                                                    <div class="view-content">
-                                                        <div class="viewall-One">
-                                                            <label class="custom_check w-100">
-                                                                <input type="checkbox" name="username">
-                                                                <span class="checkmark"></span> Barbara Moore
-                                                            </label>
-                                                            <label class="custom_check w-100">
-                                                                <input type="checkbox" name="username">
-                                                                <span class="checkmark"></span> Hendry Evan
-                                                            </label>
-                                                            <label class="custom_check w-100">
-                                                                <input type="checkbox" name="username">
-                                                                <span class="checkmark"></span> Richard Miles
-                                                            </label>
-                                                        </div>
-                                                        <div class="view-all">
-                                                            <a href="javascript:void(0);"
-                                                                class="viewall-button-One"><span class="me-2">View
-                                                                    All</span><span><i
-                                                                        class="fa fa-circle-chevron-down"></i></span></a>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /View All -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Customer -->
-
-                        <!-- Select Date -->
-                        <div class="accordion" id="accordionMain2">
-                            <div class="card-header-new" id="headingTwo">
-                                <h6 class="filter-title">
-                                    <a href="javascript:void(0);" class="w-100 collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseTwo" aria-expanded="true"
-                                        aria-controls="collapseTwo">
-                                        Select Date
-                                        <span class="float-end"><i class="fa-solid fa-chevron-down"></i></span>
-                                    </a>
-                                </h6>
-                            </div>
-
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                data-bs-parent="#accordionExample2">
-                                <div class="card-body-chat">
-                                    <div class="form-group">
-                                        <label class="form-control-label">From</label>
-                                        <div class="cal-icon">
-                                            <input type="email" class="form-control datetimepicker"
-                                                placeholder="DD-MM-YYYY">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-control-label">To</label>
-                                        <div class="cal-icon">
-                                            <input type="email" class="form-control datetimepicker"
-                                                placeholder="DD-MM-YYYY">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Select Date -->
-
-                        <!-- By Status -->
-                        <div class="accordion" id="accordionMain3">
-                            <div class="card-header-new" id="headingThree">
-                                <h6 class="filter-title">
-                                    <a href="javascript:void(0);" class="w-100 collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseThree" aria-expanded="true"
-                                        aria-controls="collapseThree">
-                                        By Status
-                                        <span class="float-end"><i class="fa-solid fa-chevron-down"></i></span>
-                                    </a>
-                                </h6>
-                            </div>
-
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                data-bs-parent="#accordionExample3">
-                                <div class="card-body-chat">
-                                    <div id="checkBoxes2">
-                                        <div class="form-custom">
-                                            <input type="text" class="form-control" id="member_search2"
-                                                placeholder="Search here">
-                                            <span><img src="/assets-admin/theme2/img/icons/search.svg"
-                                                    alt="img"></span>
-                                        </div>
-                                        <div class="selectBox-cont">
-                                            <label class="custom_check w-100">
-                                                <input type="checkbox" name="bystatus">
-                                                <span class="checkmark"></span> All Invoices
-                                            </label>
-                                            <label class="custom_check w-100">
-                                                <input type="checkbox" name="bystatus">
-                                                <span class="checkmark"></span> Paid
-                                            </label>
-                                            <label class="custom_check w-100">
-                                                <input type="checkbox" name="bystatus">
-                                                <span class="checkmark"></span> Overdue
-                                            </label>
-                                            <label class="custom_check w-100">
-                                                <input type="checkbox" name="bystatus">
-                                                <span class="checkmark"></span> Draft
-                                            </label>
-                                            <label class="custom_check w-100">
-                                                <input type="checkbox" name="bystatus">
-                                                <span class="checkmark"></span> Recurring
-                                            </label>
-                                            <label class="custom_check w-100">
-                                                <input type="checkbox" name="bystatus">
-                                                <span class="checkmark"></span> Cancelled
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /By Status -->
-
-                        <!-- Category -->
-                        <div class="accordion accordion-last" id="accordionMain4">
-                            <div class="card-header-new" id="headingFour">
-                                <h6 class="filter-title">
-                                    <a href="javascript:void(0);" class="w-100 collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseFour" aria-expanded="true"
-                                        aria-controls="collapseFour">
-                                        Category
-                                        <span class="float-end"><i class="fa-solid fa-chevron-down"></i></span>
-                                    </a>
-                                </h6>
-                            </div>
-
-                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
-                                data-bs-parent="#accordionExample4">
-                                <div class="card-body-chat">
-                                    <div id="checkBoxes3">
-                                        <div class="selectBox-cont">
-                                            <label class="custom_check w-100">
-                                                <input type="checkbox" name="category">
-                                                <span class="checkmark"></span> Advertising
-                                            </label>
-                                            <label class="custom_check w-100">
-                                                <input type="checkbox" name="category">
-                                                <span class="checkmark"></span> Food
-                                            </label>
-                                            <label class="custom_check w-100">
-                                                <input type="checkbox" name="category">
-                                                <span class="checkmark"></span> Repairs
-                                            </label>
-                                            <label class="custom_check w-100">
-                                                <input type="checkbox" name="category">
-                                                <span class="checkmark"></span> Software
-                                            </label>
-                                            <!-- View All -->
-                                            <div class="view-content">
-                                                <div class="viewall-Two">
-                                                    <label class="custom_check w-100">
-                                                        <input type="checkbox" name="username">
-                                                        <span class="checkmark"></span> Stationary
-                                                    </label>
-                                                    <label class="custom_check w-100">
-                                                        <input type="checkbox" name="username">
-                                                        <span class="checkmark"></span> Medical
-                                                    </label>
-                                                    <label class="custom_check w-100">
-                                                        <input type="checkbox" name="username">
-                                                        <span class="checkmark"></span> Designing
-                                                    </label>
-                                                </div>
-                                                <div class="view-all">
-                                                    <a href="javascript:void(0);" class="viewall-button-Two"><span
-                                                            class="me-2">View All</span><span><i
-                                                                class="fa fa-circle-chevron-down"></i></span></a>
-                                                </div>
-                                            </div>
-                                            <!-- /View All -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Category -->
-
-                        <button type="submit"
-                            class="d-inline-flex align-items-center justify-content-center btn w-100 btn-primary">
-                            <span><img src="/assets-admin/theme2/img/icons/chart.svg" class="me-2"
-                                    alt="Generate report"></span>Generate report
-                        </button>
-                    </form>
-
-                </div>
-            </div>
-        </div>
         <!--/Add Asset -->
 
         <!-- Delete Items Modal -->
@@ -620,7 +318,7 @@
     <script src="/assets-admin/theme2/js/bootstrap.bundle.min.js"></script>
 
     <!-- Datatable JS -->
-    <!-- <script src="/assets-admin/theme2/plugins/datatables/datatables.js"></script> -->
+    {{-- <script src="/assets-admin/theme2/plugins/datatables/datatables.js"></script> --}}
     <script src="{{ url('assets-admin/theme1') }}/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
@@ -639,6 +337,43 @@
     <script src="/assets-admin/theme3/plugins/summernote/summernote-bs4.min.js"></script>
     <!-- Custom JS -->
     <script src="/assets-admin/theme2/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuItems = document.querySelectorAll('.menu-item');
+
+            menuItems.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    // Hapus kelas 'active' dari semua elemen menu
+                    menuItems.forEach(function(menuItem) {
+                        menuItem.classList.remove('active');
+                    });
+
+                    // Tambahkan kelas 'active' hanya pada elemen yang diklik
+                    this.classList.add('active');
+
+                    // Simpan status 'active' ke dalam cookie
+                    const route = this.getAttribute('data-route');
+                    document.cookie = `activeRoute=${route}`;
+                });
+            });
+
+            // Memulihkan status 'active' dari cookie saat halaman dimuat ulang
+            const activeRoute = document.cookie.replace(/(?:(?:^|.*;\s*)activeRoute\s*=\s*([^;]*).*$)|^.*$/, '$1');
+            if (activeRoute) {
+                const activeItem = document.querySelector(`[data-route="${activeRoute}"]`);
+                if (activeItem) {
+                    activeItem.classList.add('active');
+                }
+            }
+        });
+
+        const rightSideViews = document.querySelector('.right-side-views');
+        rightSideViews.classList.add('d-none');
+
+        // ambil element dataTables_length dan beri display none pada sudo class ::before dan ::after
+        const dataTables_length = document.querySelector('.dataTables_length');
+        dataTables_length.style.content = "none";
+    </script>
     @yield('js')
 </body>
 

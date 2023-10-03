@@ -17,6 +17,7 @@ class TemplController extends CustomController
         $this->button_detail = true;
         $this->button_show = true;
         $this->button_filter = true;
+        $this->filter_by = ["created_at"=> '$data'];
         $this->button_import = false;
         $this->button_export = false;
         $this->paginate = 10;

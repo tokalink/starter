@@ -55,7 +55,7 @@
                                     <label for="{{ $f['name'] }}">{{ $f['label'] }}</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="{{ $f['name'] }}"
+                                            <input type="file" accept="{{ $f['accept'] ?? '' }}" class="custom-file-input form-control" id="{{ $f['name'] }}"
                                                 name="{{ $f['name'] }}" {{ $f['required'] ? 'required' : '' }}>
                                             <label class="custom-file-label" for="{{ $f['name'] }}"></label>
                                         </div>
@@ -83,14 +83,16 @@
                                     @if (isset($f['datatable']))
                                         @php
                                             $options = \DB::table($f['datatable']['table'])->get();
+                                            if(isset($f['datatable']['where'])){
+                                                $options = \DB::table($f['datatable']['table'])->whereRaw($f['datatable']['where'])->get();
+                                            }
                                         @endphp
                                         @foreach ($options as $d)
-                                            <option value="{{ $d->{$f['datatable']['value']} }}"
-                                               >
+                                            <option value="{{ $d->{$f['datatable']['value']} }}">
                                                 {{ $d->{$f['datatable']['label']} }}</option>
                                         @endforeach
                                     @endif
-                                    @isset($f['dataenum']))
+                                    @isset($f['dataenum'])
                                         @php
                                             $options = explode(',', $f['dataenum']);
                                         @endphp
@@ -99,11 +101,20 @@
                                                     $op = explode('|', $d);
                                                 @endphp
                                                 <option value="{{ $op[0] }}"
-                                                    {{ $data ? ($data->{$f['name']} == $op[0] ? 'selected' : '') : '' }}>
-                                                    {{ $op[1] ?? $op[0] }}</option>
+                                                {{ $data ? ($data->{$f['name']} == $op[0] ? 'selected' : '') : '' }}>
+                                                {{ $op[1] ?? $op[0] }}</option>
                                         @endforeach
                                     @endisset
                                 </select>
+                                @continue
+                            @endif
+
+                            @if ($f['type']=='textarea')
+                                <div class="form-group">
+                                    <label for="{{ $f['name'] }}">{{ $f['label'] }}</label>
+                                    <textarea id="{{ $f['name'] }}" rows="10" class="form-control" name="{{ $f['name'] }}" 
+                                    placeholder="{{ $f['placeholder'] }}" {{ $f['required'] ? 'required' : '' }}>{{ $data ? $data->{$f['name']} : '' }}</textarea>
+                                </div>
                                 @continue
                             @endif
 
@@ -114,9 +125,7 @@
                                     {{ $f['required'] ? 'required' : '' }} value="{{ $data ? $data->{$f['name']} : '' }}">
                             </div>
                         @endforeach
-
                     </div>
-                    <!-- /.card-body -->
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary"><i class="fa-solid fa-circle-check"></i>
@@ -125,6 +134,7 @@
                             href="/{{ config('tokalink.admin_prefix') }}/{{ $menu }}"><i
                                 class="fa-solid fa-arrow-left"></i> Back</a>
                     </div>
+
                 </form>
             </div>
         </div>
