@@ -199,7 +199,7 @@
                         </span>
                         <span class="user-content">
                             <span
-                                class="user-details text-{{ auth()->user()->role->style_color ?? '' }}">{{ auth()->user()->role->description }}</span>
+                                class="user-details text-{{ auth()->user()->role->style_color ?? '' }}">{{ auth()->user()->role->description ?? '-' }}</span>
                             <span class="user-name">{{ auth()->user()->name }}</span>
                         </span>
                     </a>
@@ -247,24 +247,29 @@
                     <ul>
                         @foreach (config('tokalink.menu') as $key => $menu)
                             @if (count($menu['child']) > 0)
-                                <li class="menu-title"><span>{{ $key }}</span></li>
-                                @foreach ($menu['child'] as $key2 => $menu2)
-                                    @php
-                                        $routeActive = url()->current();
-                                        $currentRoute = substr($routeActive, strlen(url('/')) + 1);
-                                        // $active = 'admin/' . $menu2['route'] . '';
-                                        // dd($active);
-                                        // $isActive = $currentRoute == /{{ tokalink::getAdminPrefix() }}/{{ $menu2['route'] }};
-                                        // dd($isActive);
-                                        // dd($menu2['route']);
-                                    @endphp
-                                    <li class="menu-item" data-route="{{ $menu2['route'] }}">
-                                        {{-- <li class="menu-item {{ $currentRoute == $menu2['route'] ? 'active' : '' }}"> --}}
-                                        <a href="/{{ tokalink::getAdminPrefix() }}/{{ $menu2['route'] }}"><i
-                                                class="{{ $menu2['icon'] }}"></i>
-                                            <span> {{ $key2 }} </span></a>
-                                    </li>
-                                @endforeach
+                            <li class="submenu">
+								<a href="#" class=""> <i class="{{$menu['icon']}}"></i> <span> {{$key}}</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+                                    @foreach ($menu['child'] as $key2 => $menu2)
+                                        @php
+                                            $routeActive = url()->current();
+                                            $currentRoute = substr($routeActive, strlen(url('/')) + 1);
+                                        @endphp
+                                        <li class="menu-item" data-route="{{ $menu2['route'] }}">
+                                            <a href="/{{ tokalink::getAdminPrefix() }}/{{ $menu2['route'] }}"><i
+                                                    class="{{ $menu2['icon'] }}"></i>
+                                                <span> {{ $key2 }} </span></a>
+                                        </li>
+                                    @endforeach
+								</ul>
+							</li>
+
+                            @else
+                                <li class="menu-item" data-route="{{ $menu['route'] }}">
+                                    <a href="/{{ tokalink::getAdminPrefix() }}/{{ $menu['route'] }}"><i
+                                            class="{{ $menu['icon'] }}"></i>
+                                        <span> {{ $key }} </span></a>
+                                </li>
                             @endif
                         @endforeach
                     </ul>
@@ -313,51 +318,29 @@
 
     <!-- jQuery -->
     <script src="/assets-admin/theme2/js/jquery-3.6.3.min.js"></script>
-
-    <!-- Bootstrap Core JS -->
     <script src="/assets-admin/theme2/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Datatable JS -->
-    {{-- <script src="/assets-admin/theme2/plugins/datatables/datatables.js"></script> --}}
     <script src="{{ url('assets-admin/theme1') }}/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-
-    <!-- select CSS -->
     <script src="/assets-admin/theme2/plugins/select2/js/select2.min.js"></script>
-
-    <!-- Slimscroll JS -->
     <script src="/assets-admin/theme2/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
-    <!-- Datepicker Core JS -->
     <script src="/assets-admin/theme2/plugins/moment/moment.min.js"></script>
     <script src="/assets-admin/theme2/js/bootstrap-datetimepicker.min.js"></script>
-
-    <!-- multiselect JS -->
     <script src="/assets-admin/theme2/js/jquery-ui.min.js"></script>
     <script src="/assets-admin/theme3/plugins/summernote/summernote-bs4.min.js"></script>
-    <!-- Custom JS -->
     <script src="/assets-admin/theme2/js/script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const menuItems = document.querySelectorAll('.menu-item');
-
             menuItems.forEach(function(item) {
                 item.addEventListener('click', function() {
-                    // Hapus kelas 'active' dari semua elemen menu
                     menuItems.forEach(function(menuItem) {
                         menuItem.classList.remove('active');
                     });
-
-                    // Tambahkan kelas 'active' hanya pada elemen yang diklik
                     this.classList.add('active');
-
-                    // Simpan status 'active' ke dalam cookie
                     const route = this.getAttribute('data-route');
                     document.cookie = `activeRoute=${route}`;
                 });
             });
-
-            // Memulihkan status 'active' dari cookie saat halaman dimuat ulang
             const activeRoute = document.cookie.replace(/(?:(?:^|.*;\s*)activeRoute\s*=\s*([^;]*).*$)|^.*$/, '$1');
             if (activeRoute) {
                 const activeItem = document.querySelector(`[data-route="${activeRoute}"]`);
@@ -374,6 +357,9 @@
         const dataTables_length = document.querySelector('.dataTables_length');
         dataTables_length.style.content = "none";
     </script>
+    <script src="/assets-admin/theme2/plugins/apexchart/apexcharts.min.js"></script>
+    <script src="/assets-admin/theme2/plugins/apexchart/chart-data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @yield('js')
 </body>
 

@@ -149,5 +149,13 @@
 
 
         })
+        let pages = '{{$title_form}}';
+        pages = pages.search('Detail');
+        if(pages != -1){
+            $('input').attr('disabled', true);
+            $('textarea').attr('disabled', true);
+            $('select').attr('disabled', true);
+            $('button[type=submit]').hide();
+        }
     </script>
 @endsection

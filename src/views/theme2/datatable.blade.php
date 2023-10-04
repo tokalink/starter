@@ -60,8 +60,14 @@
                     </div>
                 </div>
             </div>
-            <!-- /Page Header -->
 
+            {{-- Jika ada element html tambahan --}}
+            @if(isset($init->html[0]))
+                @foreach ($init->html as $item)
+                    {!! $item !!}
+                @endforeach
+            @endif
+            <!-- /Page Header -->
             <!-- Search Filter -->
             <div id="filter_inputs" class="card filter-card">
                 <div class="card-body pb-0">
@@ -103,6 +109,7 @@
         </div>
     </div>
 
+    {{-- Filter --}}
     <div class="toggle-sidebar">
         <div class="sidebar-layout-filter">
             <div class="sidebar-header">
@@ -248,10 +255,10 @@
 
 @section('js')
     <script>
-
         $.fn.dataTable.ext.errMode = 'none';
         var col = '{!! $columns !!}';
         col = JSON.parse(col);
+        console.log(col)
         col.unshift({
             data: 'id',
             name: 'id',
@@ -318,7 +325,7 @@
             }).then(function(result) {
                 if (result.value) {
                     $.ajax({
-                        url: window.location.href + '/remove/' + id,
+                        url: window.location.href.split('#')[0] + '/remove/' + id,
                         type: 'GET',
                         success: function(data) {
                             Swal.fire({
@@ -329,7 +336,7 @@
                                     confirmButton: 'btn btn-primary'
                                 },
                                 buttonsStyling: false
-                            })
+                            });
                             table.ajax.reload();
                         }
                     });

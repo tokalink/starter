@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class CustomController extends Controller
 {
-    public $table, $filter_by, $title, $button_print, $form, $paginate, $data_where, $title_field, $limit, $orderby, $global_privilege, $button_table_action, $button_bulk_action, $button_action_style, $button_add, $button_edit, $button_delete, $button_detail, $button_show, $button_filter, $button_import, $button_export, $col, $datatable;
+    public $table, $filter_by, $html, $title, $button_print, $form, $paginate, $data_where, $title_field, $limit, $orderby, $global_privilege, $button_table_action, $button_bulk_action, $button_action_style, $button_add, $button_edit, $button_delete, $button_detail, $button_show, $button_filter, $button_import, $button_export, $col, $datatable;
     public $col_name = [];
 
     public function Loader($controller, $menu)
@@ -26,7 +26,7 @@ class CustomController extends Controller
             $columns[] = [
                 "label" => $col['label'],
                 "image" => isset($col['image']) ? true : false,
-                "data" => $col['data']
+                "data" => $col['data'],
             ];
         }
         // add action
@@ -54,6 +54,10 @@ class CustomController extends Controller
             return $controller->getIndex($menu, $id);
         }
         $controller = new $controller_path();
+        // cek jika ada method init maka jalankan method edit dari controller
+        if (method_exists($controller, 'getIndex')) {
+            return $controller->getIndex($menu,$id);
+        }
         $data = $this->Loader($controller, $menu);
         return $data;
     }
@@ -83,10 +87,10 @@ class CustomController extends Controller
         }
         return DataTables::of($ajax_data)
             ->addColumn('action', function ($row) use ($url, $controller) {
-                $btn = '<a href="' . url($url . '/edit/' . $row->id) . '" class="btn btn-sm btn-icon btn-primary"><i class="fa fa-edit"></i></a>';
-                $btn .= '<a href="' . url($url . '/detail/' . $row->id) . '" class="btn btn-sm btn-icon btn-info"><i class="fa fa-eye"></i></a>';
+                $btn = '<a href="' . url($url . '/edit/' . $row->id) . '" class="btn btn-sm btn-icon btn-primary text-warning"><i class="fa fa-edit"></i></a>';
+                $btn .= '<a href="' . url($url . '/detail/' . $row->id) . '" class="btn btn-sm btn-icon btn-warning text-dark"><i class="fa fa-eye"></i></a>';
                 // delete confirm yes no
-                $btn .= '<a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger" onclick="confirmDelete(' . $row->id . ')"><i class="fa fa-trash"></i></a>';
+                $btn .= '<a class="btn btn-sm btn-icon btn-danger text-white" onclick="confirmDelete(' . $row->id . ')"><i class="fa fa-trash"></i></a>';
                 return $btn;
             })
             ->toJson();
@@ -260,8 +264,8 @@ class CustomController extends Controller
         }
         // create_at
         $data['created_at'] = date('Y-m-d H:i:s');
-        $data['user_id'] = auth()->user()->id;
+        // $data['user_id'] = auth()->user()->id;
         DB::table($table)->insert($data);
-        return redirect(url(config('tokalink.admin_prefix') . '/' . $table));
+        return redirect(url(config('tokalink.admin_prefix') . '/' . $menu));
     }
 }

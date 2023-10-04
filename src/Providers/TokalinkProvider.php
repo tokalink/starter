@@ -44,7 +44,7 @@ class TokalinkProvider extends ServiceProvider
 
         // copy assets to public folder
         $this->publishes([
-            __DIR__.'/../assets-admin' => public_path('admin-assets'),
+            __DIR__.'/../admin-assets' => public_path('assets-admin'),
         ], 'tokalink-assets-admin');
 
         $this->publishes([
