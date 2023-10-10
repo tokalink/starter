@@ -25,11 +25,14 @@
         </div>
     </div>
 </div>
-
 @endsection
 
 @section('js')
 <script>
+let button_add = '{{ json_encode($init->button_add) }}'
+let button_filter = '{{ json_encode($init->button_filter) }}'
+
+
     $.fn.dataTable.ext.errMode = 'none';
     var col = '{!! $columns !!}';
     col = JSON.parse(col);
@@ -78,7 +81,7 @@
             '>',
         buttons: [{
                 extend: 'collection',
-                className: 'btn btn-label-secondary dropdown-toggle me-3',
+                className: 'btn btn-warning dropdown-toggle me-3',
                 text: '<i class="ti ti-download me-1 ti-xs"></i>Export',
                 buttons: [{
                         extend: 'print',
@@ -110,21 +113,20 @@
             },
             {
                 extend: 'collection',
-                className: 'btn btn-label-default dropdown-toggle me-3',
+                className: 'btn btn-primary dropdown-toggle me-3',
                 text: '<i class="ti me-1 ti-xs"></i>Options Menu',
-                buttons: [{
-                        // add item
-                        text: '<i class="ti ti-file me-1 ti-xs"></i>Add Item',
+                buttons: [
+                    {
+                        text: '<i class="ti ti-plus me-sm-1"></i>Add Item',
                         className: 'dropdown-item',
-                        action: window.location.href + '/add'
-                    }
-
+                        action: function(){
+                            window.location.href = `${document.location.href.split('#')[0]}/add`;
+                        }
+                    },
                 ]
             }
-
         ],
     });
-
 
     // delete sweetalert2 confirm
     function confirmDelete(id) {

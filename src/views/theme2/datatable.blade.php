@@ -1,6 +1,14 @@
 @extends('AdminLayout::layout')
 
 @section('content')
+    <style>
+        .limited-width {
+            max-width: 100px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
     <div class="page-wrapper">
         <div class="content container-fluid">
             <!-- Page Header -->
@@ -11,7 +19,8 @@
                         <ul class="filter-list">
                             @if ($init->button_filter)
                                 <li>
-                                    <a class="btn btn-filters w-auto popup-toggle"><span class="me-2"><i class="fe fe-filter"></i></span>Filter </a>
+                                    <a class="btn btn-filters w-auto popup-toggle"><span class="me-2"><i
+                                                class="fe fe-filter"></i></span>Filter </a>
                                 </li>
                             @endif
                             @if ($init->button_export)
@@ -62,7 +71,7 @@
             </div>
 
             {{-- Jika ada element html tambahan --}}
-            @if(isset($init->html[0]))
+            @if (isset($init->html[0]))
                 @foreach ($init->html as $item)
                     {!! $item !!}
                 @endforeach
@@ -153,13 +162,12 @@
                         </div>
                     @endif
 
-                    @foreach($init->filter_by as $filter)
+                    @foreach ($init->filter_by as $filter)
                         <div class="accordion" id="accordionMain2">
                             <div class="card-header-new" id="headingTwo">
                                 <h6 class="filter-title">
                                     <a href="javascript:void(0);" class="w-100 collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseTwo" aria-expanded="true"
-                                        aria-controls="collapseTwo">
+                                        data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                                         Select Date
                                         <span class="float-end"><i class="fa-solid fa-chevron-down"></i></span>
                                     </a>
@@ -258,26 +266,43 @@
         $.fn.dataTable.ext.errMode = 'none';
         var col = '{!! $columns !!}';
         col = JSON.parse(col);
-        console.log(col)
         col.unshift({
             data: 'id',
             name: 'id',
             orderable: false,
             searchable: false
         });
+        console.log(col)
+        // jika ada callback maka ubah data sesuai callback
+        col.forEach(function(item, index) {
+            // jika ada callback maka ubah data sesuai callback
+            if (item.callback) {
+                // mRender
+                if (item.callback) {
+                    col[index].render = function(data, type, row) {
+                        data = $('<div/>').html(data).text();
+                        return data;
+                    }
+                }
+            }
+            if(item.v_align){
+                col[index].render = function(data, type, row) {
+                    item.className = 'text-' + item.v_align;
+                }
+            }
+        });
 
         var table = $('.datatable2').DataTable({
             ajax: window.location.href.split("#")[0] + '/ajax',
             processing: true,
             serverSide: true,
-            pageLength: 10,
+            pageLength: {{ $init->paginate ?? 10 }},
             dom: '<"row"<"col-sm-12 col-md-6"B><"col-sm-12 col-md-6"f>>tl<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>',
             lengthMenu: [
                 [10, 20, 50, 100, 500, 1000, 2000, 5000, -1],
                 [10, 20, 50, 100, 500, 1000, 2000, 5000, 'All']
             ],
-            'columnDefs': [
-                {
+            'columnDefs': [{
                 targets: 0,
                 orderable: false,
                 checkboxes: {
@@ -286,9 +311,8 @@
                 render: function() {
                     return '<input type="checkbox" class="dt-checkboxes form-check-input" >';
                 },
-                    searchable: false
-                }
-            ],
+                searchable: false
+            }],
             drawCallback: function() {
                 $('.dataTables_filter').addClass('text-end');
                 $('.buttons-copy').removeClass('btn-secondary').addClass('btn-warning');
@@ -296,7 +320,6 @@
                 $('.buttons-excel').removeClass('btn-secondary').addClass('btn-success');
                 $('.buttons-pdf').removeClass('btn-secondary').addClass('btn-danger');
                 $('.form-select-sm').removeClass('form-select');
-                console.log('Draw completed');
             },
             columns: col,
             buttons: [

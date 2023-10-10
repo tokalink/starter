@@ -142,20 +142,19 @@
 @endsection
 
 @section('js')
-    <script>
-        $(function() {
-            // Summernote
-            $('.summernote').summernote()
-
-
-        })
-        let pages = '{{$title_form}}';
-        pages = pages.search('Detail');
-        if(pages != -1){
-            $('input').attr('disabled', true);
-            $('textarea').attr('disabled', true);
-            $('select').attr('disabled', true);
-            $('button[type=submit]').hide();
-        }
-    </script>
+<script src="https://apidaerah.danpro.my.id/daerah.js"></script>
+<script>
+    $(function() {
+        // Summernote
+        $('.summernote').summernote()
+    })
+    let pages = '{{$title_form}}';
+    pages = pages.search('Detail');
+    if(pages != -1){
+        $('input').attr('disabled', true);
+        $('textarea').attr('disabled', true);
+        $('select').attr('disabled', true);
+        $('button[type=submit]').hide();
+    }
+</script>
 @endsection

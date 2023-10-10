@@ -9,7 +9,7 @@
                 </label>
             </th>
             @foreach($cols as $col)
-            <th>{{$col['label']}}</th>
+            <th class="text-{{$col['align'] ?? 'left'}}">{{$col['label']}}</th>
             @endforeach
             <th>Action</th>
         </tr>

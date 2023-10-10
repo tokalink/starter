@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Tokalink</title>
+    <title>{{env('APP_NAME','WEB')}}</title>
     <link rel="shortcut icon" href="/assets-admin/theme2/img/favicon.png">
     <link rel="stylesheet" href="/assets-admin/theme2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets-admin/theme2/plugins/fontawesome/css/fontawesome.min.css">
@@ -53,38 +53,6 @@
 
             <!-- Header Menu -->
             <ul class="nav nav-tabs user-menu">
-                <!-- Flag -->
-                {{-- <li class="nav-item dropdown has-arrow flag-nav">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">
-                        <img src="/assets-admin/theme2/img/flags/us1.png" alt=""
-                            height="20"><span>English</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <a href="javascript:void(0);" class="dropdown-item">
-                            <img src="/assets-admin/theme2/img/flags/us.png" alt=""
-                                height="16"><span>English</span>
-                        </a>
-                        <a href="javascript:void(0);" class="dropdown-item">
-                            <img src="/assets-admin/theme2/img/flags/fr.png" alt=""
-                                height="16"><span>French</span>
-                        </a>
-                        <a href="javascript:void(0);" class="dropdown-item">
-                            <img src="/assets-admin/theme2/img/flags/es.png" alt=""
-                                height="16"><span>Spanish</span>
-                        </a>
-                        <a href="javascript:void(0);" class="dropdown-item">
-                            <img src="/assets-admin/theme2/img/flags/de.png" alt=""
-                                height="16"><span>German</span>
-                        </a>
-                    </div>
-                </li> --}}
-                <!-- /Flag -->
-
-                {{-- <li class="nav-item  has-arrow dropdown-heads ">
-                    <a href="javascript:void(0);" class="toggle-switch">
-                        <i class="fe fe-moon"></i>
-                    </a>
-                </li> --}}
                 <li class="nav-item dropdown  flag-nav dropdown-heads">
                     <a class="nav-link" data-bs-toggle="dropdown" href="#" role="button">
                         <i class="fe fe-bell"></i> <span class="badge rounded-pill"></span>
@@ -100,8 +68,7 @@
                                     <a href="profile.html">
                                         <div class="media d-flex">
                                             <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt=""
-                                                    src="/assets-admin/theme2/img/profiles/avatar-02.jpg">
+                                                <img class="avatar-img rounded-circle" alt="" src="/assets-admin/theme2/img/profiles/avatar-02.jpg">
                                             </span>
                                             <div class="media-body">
                                                 <p class="noti-details"><span class="noti-title">Brian Johnson</span>
@@ -232,7 +199,7 @@
             <div class="sidebar-header">
                 <div class="sidebar-logo">
                     <a href="/admin">
-                        <img src="/assets-admin/theme2/img/logo.png" class="img-fluid logo" alt="">
+                        <img src="{{config('tokalink.logo_web') ?? '/assets-admin/theme2/img/logo.png'}}" class="img-fluid logo" alt="">
                     </a>
                     <a href="/admin">
                         <img src="/assets-admin/theme2/img/logo-small.png" class="img-fluid logo-small"
@@ -245,27 +212,36 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <!-- Main -->
                     <ul>
+                        @php
+                            // $activeRoute = request()->segment(2);
+                            $activeRoute = $menu ?? '';
+                        @endphp
                         @foreach (config('tokalink.menu') as $key => $menu)
                             @if (count($menu['child']) > 0)
-                            <li class="submenu">
-								<a href="#" class=""> <i class="{{$menu['icon']}}"></i> <span> {{$key}}</span> <span class="menu-arrow"></span></a>
-								<ul style="display: none;">
-                                    @foreach ($menu['child'] as $key2 => $menu2)
-                                        @php
-                                            $routeActive = url()->current();
-                                            $currentRoute = substr($routeActive, strlen(url('/')) + 1);
-                                        @endphp
-                                        <li class="menu-item" data-route="{{ $menu2['route'] }}">
-                                            <a href="/{{ tokalink::getAdminPrefix() }}/{{ $menu2['route'] }}"><i
-                                                    class="{{ $menu2['icon'] }}"></i>
-                                                <span> {{ $key2 }} </span></a>
+                                <li class="menu-title text-primary" style="background-color: rgb(80 136 255 / 50%);">
+                                    <span>{{ $key }}</span>
+                                </li>
+
+                                @foreach ($menu['child'] as $key2 => $menu2)
+                                    @if(count($menu2['child'])>0)
+                                        <li class="submenu">
+                                            <a href="#"><i class="{{ $menu2['icon'] }}"></i> <span> {{ $key2 }} </span> <span class="menu-arrow"></span></a>
+                                            <ul class="sub-menus">
+                                                @foreach ($menu2['child'] as $key3 => $menu3)
+                                                    <li><a class="{{ $activeRoute == str_replace(' ','',$key3) ? 'active':'' }}" href="/{{ tokalink::getAdminPrefix() }}/{{ $menu3['route'] }}">{{ $key3 }}</a></li>
+                                                @endforeach
+                                            </ul>
                                         </li>
-                                    @endforeach
-								</ul>
-							</li>
+                                    @else
+                                        <li class="menu-item {{ $activeRoute == $menu2['route'] ? 'active':'' }}" data-route="{{ $menu2['route'] }}">
+                                            <a href="/{{ tokalink::getAdminPrefix() }}/{{ $menu2['route'] }}"><i class="{{ $menu2['icon'] }}"></i>
+                                            <span> {{ $key2 }} </span></a>
+                                        </li>
+                                    @endif
+                                @endforeach
 
                             @else
-                                <li class="menu-item" data-route="{{ $menu['route'] }}">
+                                <li class="menu-item active" data-route="{{ $menu['route'] }}">
                                     <a href="/{{ tokalink::getAdminPrefix() }}/{{ $menu['route'] }}"><i
                                             class="{{ $menu['icon'] }}"></i>
                                         <span> {{ $key }} </span></a>
@@ -329,33 +305,33 @@
     <script src="/assets-admin/theme3/plugins/summernote/summernote-bs4.min.js"></script>
     <script src="/assets-admin/theme2/js/script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuItems = document.querySelectorAll('.menu-item');
-            menuItems.forEach(function(item) {
-                item.addEventListener('click', function() {
-                    menuItems.forEach(function(menuItem) {
-                        menuItem.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                    const route = this.getAttribute('data-route');
-                    document.cookie = `activeRoute=${route}`;
-                });
-            });
-            const activeRoute = document.cookie.replace(/(?:(?:^|.*;\s*)activeRoute\s*=\s*([^;]*).*$)|^.*$/, '$1');
-            if (activeRoute) {
-                const activeItem = document.querySelector(`[data-route="${activeRoute}"]`);
-                if (activeItem) {
-                    activeItem.classList.add('active');
-                }
-            }
-        });
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const menuItems = document.querySelectorAll('.menu-item');
+        //     menuItems.forEach(function(item) {
+        //         item.addEventListener('click', function() {
+        //             menuItems.forEach(function(menuItem) {
+        //                 menuItem.classList.remove('active');
+        //             });
+        //             this.classList.add('active');
+        //             const route = this.getAttribute('data-route');
+        //             document.cookie = `activeRoute=${route}`;
+        //         });
+        //     });
+        //     const activeRoute = document.cookie.replace(/(?:(?:^|.*;\s*)activeRoute\s*=\s*([^;]*).*$)|^.*$/, '$1');
+        //     if (activeRoute) {
+        //         const activeItem = document.querySelector(`[data-route="${activeRoute}"]`);
+        //         if (activeItem) {
+        //             activeItem.classList.add('active');
+        //         }
+        //     }
+        // });
 
         const rightSideViews = document.querySelector('.right-side-views');
         rightSideViews.classList.add('d-none');
 
         // ambil element dataTables_length dan beri display none pada sudo class ::before dan ::after
         const dataTables_length = document.querySelector('.dataTables_length');
-        dataTables_length.style.content = "none";
+        // dataTables_length?.style?.content = "none";
     </script>
     <script src="/assets-admin/theme2/plugins/apexchart/apexcharts.min.js"></script>
     <script src="/assets-admin/theme2/plugins/apexchart/chart-data.js"></script>

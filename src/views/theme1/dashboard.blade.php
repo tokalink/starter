@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-5 text-center text-sm-left">
                     <div class="card-body pb-0 px-0 px-md-4">
-                        <img src="{{url('tokalink-assets')}}/img/illustrations/card-advance-sale.png" height="140" alt="view sales" />
+                        <img src="/assets-admin/theme1/img/illustrations/card-advance-sale.png" height="140" alt="view sales" />
                     </div>
                 </div>
             </div>
@@ -303,7 +303,7 @@
                 <ul class="p-0 m-0">
                     <li class="d-flex mb-4 pb-1">
                         <div class="me-3">
-                            <img src="{{url('tokalink-assets')}}/img/products/iphone.png" alt="User" class="rounded" width="46" />
+                            <img src="/assets-admin/theme1/img/products/iphone.png" alt="User" class="rounded" width="46" />
                         </div>
                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
@@ -317,7 +317,7 @@
                     </li>
                     <li class="d-flex mb-4 pb-1">
                         <div class="me-3">
-                            <img src="{{url('tokalink-assets')}}/img/products/nike-air-jordan.png" alt="User" class="rounded" width="46" />
+                            <img src="/assets-admin/theme1/img/products/nike-air-jordan.png" alt="User" class="rounded" width="46" />
                         </div>
                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
@@ -331,7 +331,7 @@
                     </li>
                     <li class="d-flex mb-4 pb-1">
                         <div class="me-3">
-                            <img src="{{url('tokalink-assets')}}/img/products/headphones.png" alt="User" class="rounded" width="46" />
+                            <img src="/assets-admin/theme1/img/products/headphones.png" alt="User" class="rounded" width="46" />
                         </div>
                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
@@ -345,7 +345,7 @@
                     </li>
                     <li class="d-flex mb-4 pb-1">
                         <div class="me-3">
-                            <img src="{{url('tokalink-assets')}}/img/products/apple-watch.png" alt="User" class="rounded" width="46" />
+                            <img src="/assets-admin/theme1/img/products/apple-watch.png" alt="User" class="rounded" width="46" />
                         </div>
                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
@@ -359,7 +359,7 @@
                     </li>
                     <li class="d-flex mb-4 pb-1">
                         <div class="me-3">
-                            <img src="{{url('tokalink-assets')}}/img/products/amazon-echo.png" alt="User" class="rounded" width="46" />
+                            <img src="/assets-admin/theme1/img/products/amazon-echo.png" alt="User" class="rounded" width="46" />
                         </div>
                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
@@ -373,7 +373,7 @@
                     </li>
                     <li class="d-flex">
                         <div class="me-3">
-                            <img src="{{url('tokalink-assets')}}/img/products/play-station.png" alt="User" class="rounded" width="46" />
+                            <img src="/assets-admin/theme1/img/products/play-station.png" alt="User" class="rounded" width="46" />
                         </div>
                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
