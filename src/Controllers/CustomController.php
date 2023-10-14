@@ -302,8 +302,8 @@ class CustomController extends Controller
                 $file_name = time() . '_' . preg_replace('/\s+/', '_', strtolower($file->getClientOriginalName()));
                 if ($init->upload_path) {
                     // save on public.$this->upload_path
-                    $file_url =  Storage::disk('public')->putFileAs($this->upload_path, $file, $file_name);
-                    dd($file_url);
+                    $file_name = preg_replace('/\s+/', '_', strtolower($file->getClientOriginalName()));
+                    $file_url =  Storage::disk('local')->putFileAs($init->upload_path, $file, $file_name);
                 } else {
                     $file_url =  Storage::disk('public')->putFileAs($table, $file, $file_name);
                 }

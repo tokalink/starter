@@ -53,13 +53,36 @@
                             @if ($f['type'] == 'file')
                                 <div class="form-group">
                                     <label for="{{ $f['name'] }}">{{ $f['label'] }}</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" accept="{{ $f['accept'] ?? '' }}" class="custom-file-input form-control" id="{{ $f['name'] }}"
-                                                name="{{ $f['name'] }}" {{ $f['required'] ? 'required' : '' }}>
-                                            <label class="custom-file-label" for="{{ $f['name'] }}"></label>
+                                    {{-- jika file ada --}}
+                                    @if ($data && $data->{$f['name']})
+                                        {{-- jika file maka tampilkan image --}}
+                                        @if (isset($f['accept']) && in_array($f['accept'], ['image/jpeg', 'image/png', 'image/jpg', 'image/*']))
+                                            <div class="mt-2">
+                                                <img src="/{{ $data->{$f['name']} }}" alt="" width="200px">
+                                            </div>
+                                        @else
+                                            {{-- link download file --}}
+                                            <a href="{{ $data->{$f['name']} }}" target="_blank"
+                                                class="link"><i class="fa-solid fa-download"></i>
+                                                Download</a>
+                                        @endif
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" accept="{{ $f['accept'] ?? '' }}" class="custom-file-input form-control" id="{{ $f['name'] }}"
+                                                    name="{{ $f['name'] }}">
+                                                <label class="custom-file-label" for="{{ $f['name'] }}"></label>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @else
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" accept="{{ $f['accept'] ?? '' }}" class="custom-file-input form-control" id="{{ $f['name'] }}"
+                                                    name="{{ $f['name'] }}" {{ $f['required'] ? 'required' : '' }}>
+                                                <label class="custom-file-label" for="{{ $f['name'] }}"></label>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    
                                 </div>
                                 @continue
                             @endif
@@ -68,7 +91,7 @@
                             @if ($f['type'] == 'htmleditor')
                                 <div class="form-group">
                                     <label for="{{ $f['name'] }}">{{ $f['label'] }}</label>
-                                    <textarea id="{{ $f['name'] }}" rows="10" class="summernote" name="{{ $f['name'] }}"
+                                    <textarea id="{{ $f['name'] }}" rows="10" class="htmleditor" name="{{ $f['name'] }}"
                                         placeholder="{{ $f['placeholder'] }}" {{ $f['required'] ? 'required' : '' }}>
                                         {{ $data ? $data->{$f['name']} : '' }}
                                     </textarea>
@@ -146,8 +169,10 @@
 <script>
     $(function() {
         // Summernote
-        $('.summernote').summernote()
+        // $('.summernote').summernote()
+        
     })
+    CKEDITOR.replaceClass = 'htmleditor';
     let pages = '{{$title_form}}';
     pages = pages.search('Detail');
     if(pages != -1){

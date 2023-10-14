@@ -218,10 +218,10 @@
                         @endphp
                         @foreach (config('tokalink.menu') as $key => $menu)
                             @if (count($menu['child']) > 0)
-                                <li class="menu-title text-primary" style="background-color: rgb(80 136 255 / 50%);">
+                            
+                                <li class="menu-title text-primary" style="background-color: rgb(80 255 253 / 50%);">
                                     <span>{{ $key }}</span>
                                 </li>
-
                                 @foreach ($menu['child'] as $key2 => $menu2)
                                     @if(count($menu2['child'])>0)
                                         <li class="submenu">
@@ -302,7 +302,8 @@
     <script src="/assets-admin/theme2/plugins/moment/moment.min.js"></script>
     <script src="/assets-admin/theme2/js/bootstrap-datetimepicker.min.js"></script>
     <script src="/assets-admin/theme2/js/jquery-ui.min.js"></script>
-    <script src="/assets-admin/theme3/plugins/summernote/summernote-bs4.min.js"></script>
+    {{-- <script src="/assets-admin/theme3/plugins/summernote/summernote-bs4.min.js"></script> --}}
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
     <script src="/assets-admin/theme2/js/script.js"></script>
     <script>
         // document.addEventListener('DOMContentLoaded', function() {
