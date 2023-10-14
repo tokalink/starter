@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function showLoginForm()
-    {
+    public function showLoginForm(){
         // jika sudah login
         if (auth()->check()) {
             return redirect()->route('tokalink.dashboard');
@@ -18,8 +17,7 @@ class LoginController extends Controller
         return view('AdminLayout::auth.login');
     }
 
-    public function login(Request $request)
-    {
+    public function login(Request $request){
         $credentials = $request->only(['email-username', 'password']);
 
         // login by email or username

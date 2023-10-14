@@ -5,6 +5,9 @@ return [
     'admin_prefix' => env('ADMIN_PREFIX_URL', 'admin'),
     'theme' => env('THEME_ADMIN', 'theme3'),
     'logo_web' => "/assets-admin/theme2/img/logo.png",
+    'facebook_login' => env('FACEBOOK_LOGIN', false),
+    'google_login' => env('GOOGLE_LOGIN', false),
+    'twitter_login' => env('TWITTER_LOGIN', false),
     'menu' => [
         'Main' => [
             'icon' => 'fas fa-cart-plus',

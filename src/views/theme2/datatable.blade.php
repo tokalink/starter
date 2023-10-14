@@ -128,7 +128,7 @@
             <div class="sidebar-body">
                 <form action="#" autocomplete="off">
 
-                    @if ($init->filter_by['created_at'])
+                    @if (isset($init->filter_by['created_at']) && $init->filter_by['created_at'])
                         <div class="accordion" id="accordionMain2">
                             <div class="card-header-new" id="created_at">
                                 <h6 class="filter-title">
