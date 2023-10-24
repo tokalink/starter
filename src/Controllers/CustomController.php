@@ -204,8 +204,8 @@ class CustomController extends Controller
         }
         $controller = new $controller_path();
         // cek jika ada method init maka jalankan method edit dari controller
-        if (method_exists($controller, 'vEdit')) {
-            return $controller->edit($id);
+        if (method_exists($controller, 'getDetail')) {
+            return $controller->getDetail($id);
         }
         // dd($menu,$id,$controller);
         $controller->init();

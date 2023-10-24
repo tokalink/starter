@@ -162,7 +162,7 @@
 
     <!-- Page JS -->
     <script src="{{ url('assets-admin/theme1') }}/js/app-ecommerce-dashboard.js"></script>
-    <script src="{{ url('assets-admin/theme1') }}/js/app-chat.js"></script>
+   
     @yield('js')
 </body>
 
