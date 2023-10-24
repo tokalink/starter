@@ -22,6 +22,20 @@ Route::middleware(['web'])->prefix(config('tokalink.admin_prefix'))->group(funct
 Route::group(['middleware' => ['web', 'auth'], 'as' => 'tokalink.', 'prefix' => config('tokalink.admin_prefix')], function () {
     // dashboard
     Route::get('/', function () {
+        // cek DashboardController exist
+        $controller_path = 'App\\Http\\Controllers\\Admin\\DashboardController';
+        // jika file exist cek class getIndex exist
+        if (class_exists($controller_path)) {
+            $controller = new $controller_path();
+            if (method_exists($controller, 'getIndex')) {
+                return $controller->getIndex();
+            }
+        }
+        // jika tidak exist tampilkan default view
+        // cek view dashboard exist id resources/views/admin/dashboard.blade.php
+        if (file_exists(resource_path('views/admin/dashboard.blade.php'))) {
+            return view('admin.dashboard');
+        }
         return view('AdminLayout::dashboard');
     })->name('dashboard');
 

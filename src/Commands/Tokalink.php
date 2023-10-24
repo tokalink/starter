@@ -31,19 +31,19 @@ class Tokalink extends Command
         $this->comment("
           _______    ____    _  __             _        _____   _   _   _  __
          |__   __|  / __ \  | |/ /     /\     | |      |_   _| | \ | | | |/ /
-            | |    | |  | | | ' /     /  \    | |        | |   |  \| | | ' / 
-            | |    | |  | | |  <     / /\ \   | |        | |   | . ` | |  <  
-            | |    | |__| | | . \   / ____ \  | |____   _| |_  | |\  | | . \ 
+            | |    | |  | | | ' /     /  \    | |        | |   |  \| | | ' /
+            | |    | |  | | |  <     / /\ \   | |        | |   | . ` | |  <
+            | |    | |__| | | . \   / ____ \  | |____   _| |_  | |\  | | . \
             |_|     \____/  |_|\_\ /_/    \_\ |______| |_____| |_| \_| |_|\_\
-            
+
             Selamat datang di Tokalink, Mohon Setup dulu Database anda di .env
-                                                                            
+
         "); // kosong
 
-       // Buat pertanyaan yakin mau install atau tidak
-        if (! $this->confirm('Yakin mau install Tokalink?')) {
+        // Buat pertanyaan yakin mau install atau tidak
+        if (!$this->confirm('Yakin mau install Tokalink?')) {
             return;
-        } 
+        }
 
         // info installing tokalink
 
@@ -60,24 +60,23 @@ class Tokalink extends Command
                     '--force' => true,
                 ]);
             }
-            
-        }else{
+        } else {
             $this->call('vendor:publish', [
                 '--provider' => "Tokalink\Starter\Providers\TokalinkProvider",
                 '--tag' => "tokalink-config",
             ]);
         }
 
-       
+
 
         $this->info('Publishing assets...');
 
         $this->call('vendor:publish', [
             '--provider' => "Tokalink\Starter\Providers\TokalinkProvider",
-            '--tag' => "tokalink-assets-admin/theme1",
+            '--tag' => "tokalink-assets-admin",
         ]);
 
-         
+
         // tanya hapus migration default laravel atau tidak, jika ya maka hapus semua table
         if ($this->confirm('Yakin mau hapus migration default laravel?')) {
             $this->info('Hapus migration default laravel...');
@@ -111,8 +110,8 @@ class Tokalink extends Command
                 '--class' => "Tokalink\Starter\Seeders\create_roles",
             ]);
         }
-       
-       
+
+
 
         $this->info('Installed Tokalink');
     }

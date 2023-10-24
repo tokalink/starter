@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>{{env('APP_NAME','WEB')}}</title>
+    <title>{{ env('APP_NAME', 'WEB') }}</title>
     <link rel="shortcut icon" href="/assets-admin/theme2/img/favicon.png">
     <link rel="stylesheet" href="/assets-admin/theme2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets-admin/theme2/plugins/fontawesome/css/fontawesome.min.css">
@@ -15,6 +15,7 @@
         href="{{ url('assets-admin/theme1') }}/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
     <link rel="stylesheet" href="/assets-admin/theme3/plugins/summernote/summernote-bs4.min.css">
     <link rel="stylesheet" href="/assets-admin/theme2/css/style.css">
+    @yield('css')
 </head>
 
 <body>
@@ -68,7 +69,8 @@
                                     <a href="profile.html">
                                         <div class="media d-flex">
                                             <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt="" src="/assets-admin/theme2/img/profiles/avatar-02.jpg">
+                                                <img class="avatar-img rounded-circle" alt=""
+                                                    src="/assets-admin/theme2/img/profiles/avatar-02.jpg">
                                             </span>
                                             <div class="media-body">
                                                 <p class="noti-details"><span class="noti-title">Brian Johnson</span>
@@ -199,7 +201,8 @@
             <div class="sidebar-header">
                 <div class="sidebar-logo">
                     <a href="/admin">
-                        <img src="{{config('tokalink.logo_web') ?? '/assets-admin/theme2/img/logo.png'}}" class="img-fluid logo" alt="">
+                        <img src="{{ config('tokalink.logo_web') ?? '/assets-admin/theme2/img/logo.png' }}"
+                            class="img-fluid logo" alt="">
                     </a>
                     <a href="/admin">
                         <img src="/assets-admin/theme2/img/logo-small.png" class="img-fluid logo-small"
@@ -218,28 +221,31 @@
                         @endphp
                         @foreach (config('tokalink.menu') as $key => $menu)
                             @if (count($menu['child']) > 0)
-                            
                                 <li class="menu-title text-primary" style="background-color: rgb(80 255 253 / 50%);">
                                     <span>{{ $key }}</span>
                                 </li>
                                 @foreach ($menu['child'] as $key2 => $menu2)
-                                    @if(count($menu2['child'])>0)
+                                    @if (count($menu2['child']) > 0)
                                         <li class="submenu">
-                                            <a href="#"><i class="{{ $menu2['icon'] }}"></i> <span> {{ $key2 }} </span> <span class="menu-arrow"></span></a>
+                                            <a href="#"><i class="{{ $menu2['icon'] }}"></i> <span>
+                                                    {{ $key2 }} </span> <span class="menu-arrow"></span></a>
                                             <ul class="sub-menus">
                                                 @foreach ($menu2['child'] as $key3 => $menu3)
-                                                    <li><a class="{{ $activeRoute == str_replace(' ','',$key3) ? 'active':'' }}" href="/{{ tokalink::getAdminPrefix() }}/{{ $menu3['route'] }}">{{ $key3 }}</a></li>
+                                                    <li><a class="{{ $activeRoute == str_replace(' ', '', $key3) ? 'active' : '' }}"
+                                                            href="/{{ tokalink::getAdminPrefix() }}/{{ $menu3['route'] }}">{{ $key3 }}</a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         </li>
                                     @else
-                                        <li class="menu-item {{ $activeRoute == $menu2['route'] ? 'active':'' }}" data-route="{{ $menu2['route'] }}">
-                                            <a href="/{{ tokalink::getAdminPrefix() }}/{{ $menu2['route'] }}"><i class="{{ $menu2['icon'] }}"></i>
-                                            <span> {{ $key2 }} </span></a>
+                                        <li class="menu-item {{ $activeRoute == $menu2['route'] ? 'active' : '' }}"
+                                            data-route="{{ $menu2['route'] }}">
+                                            <a href="/{{ tokalink::getAdminPrefix() }}/{{ $menu2['route'] }}"><i
+                                                    class="{{ $menu2['icon'] }}"></i>
+                                                <span> {{ $key2 }} </span></a>
                                         </li>
                                     @endif
                                 @endforeach
-
                             @else
                                 <li class="menu-item active" data-route="{{ $menu['route'] }}">
                                     <a href="/{{ tokalink::getAdminPrefix() }}/{{ $menu['route'] }}"><i
